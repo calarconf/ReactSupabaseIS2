@@ -64,7 +64,7 @@ function TaskForm() {
             <button disabled={adding} className='btn btn-primary btn-sm'>
                 {adding ? 'Solicitando...' : 'Solicitar'}
             </button>
-            <button onClick={handleClick}>Pagar</button>
+            {/* <button onClick={handleClick}>Pagar</button> */}
             {preferenceId && <Wallet initialization={{ preferenceId: preferenceId, redirectMode :'blank' }} />}
             {/* <Wallet initialization={{ preferenceId: '<PREFERENCE_ID>' }} customization={{ texts:{ valueProp: 'smart_option'}}} /> */}
         </form>
