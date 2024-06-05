@@ -1,0 +1,53 @@
+.wrapper {
+  padding-top: 120px; 
+}
+.terms-container {
+  max-width: 50%;
+  padding: 10px;
+  text-align: center; 
+  margin: auto; 
+}
+
+.button-submit {
+  width: 30%;   
+  padding: 10px 20px; 
+  font-size: 16px;    
+}
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 30%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+h3{
+    color: #ccc;
+}
+.terms-container {
+  margin-top: 20px;
+}
+
+.terms-details {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.terms-details p {
+  font-size: 14px;
+}
+
+.terms-details ul {
+  list-style-type:square;
+  padding: 0;
+}
+
+.terms-details ul li {
+  margin-bottom: 10px;
+}
+
