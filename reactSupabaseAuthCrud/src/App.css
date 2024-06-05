@@ -1,42 +1,75 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.App {
+  font-family: sans-serif;
   text-align: center;
+
 }
 
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  background: #05161A;
+  font-family: barlow, arial, sans-serif;
+  font-weight: 400;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pageContainer {
+  align-items: center;
+  padding: 200px;
+  color: white;
+  box-sizing: border-box;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
-.card {
-  padding: 2em;
+li {
+  list-style: none;
 }
 
-.read-the-docs {
-  color: #888;
-} */
+span {
+  font-size: x-small;
+}
+
+/* botones, forms e inputs */
+label {
+  display: block;
+  margin: 10px;
+  color: #6BA2A9;
+}
+
+input,
+select {
+  width: 100%;
+  height: 100%;
+  background: #072E33;
+  border: none;
+  outline: none;
+  border: 3px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #ffff;
+  padding: 10px 15px 10px 10px;
+}
+
+
+button {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 700;
+}
+
+.checkbox {
+  position: relative;
+  font-size: 20px;
+}

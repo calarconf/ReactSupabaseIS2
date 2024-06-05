@@ -1,43 +1,63 @@
 import './App.css'
 import { useEffect } from 'react'
-import {Routes, Route, useNavigate} from 'react-router-dom'
+import { Routes, Route, useNavigate, BrowserRouter as Router } from 'react-router-dom'
 import { TaskContextProvider } from './context/TaskContext'
 
 import Login from './pages/Login'
-import Home from './pages/Home'
+//import Home from './components/Routes/Home';
+import Home from './components/Routes/compostar';
+import Cuenta from './components/Routes/cuenta';
+import Nosotros from './components/Routes/nosotros';
+import CompostRequest from './components/Routes/CompostRequest';
+
+
 import NotFound from './pages/NotFound'
 import { supabase } from './supabase/client'
-import Navbar from './components/Navbar'
+
 
 
 function App() {
   const navigate = useNavigate()
 
-  useEffect(() =>{
-    supabase.auth.onAuthStateChange((event, session) =>{
-      if(!session){
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (!session) {
         navigate('/login')
-      }else{
+      } else {
         navigate('/')
       }
     })
 
   }, [])
   return (
-    
-      <div>
-        <TaskContextProvider>
-          <Navbar/>
-          <div className="container">
-          <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/login' element={<Login/>} />
-            <Route path='*' element={<NotFound/>} />
-          </Routes>
-          </div>
-        </TaskContextProvider>
-      </div>
-    
+
+    <div className='App'>
+      <TaskContextProvider>
+        {/* <Navbar /> */}
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/us" element={<Nosotros />} />
+          <Route path="/compost-request" element={<CompostRequest />} />
+
+          {/* paths a diferentes tabs de profile en Cuenta */}
+          <Route path="/active-collects" element={<Cuenta />} />
+          <Route path="/collect-record" element={<Cuenta />} />
+          <Route path="/follow-up" element={<Cuenta />} />
+          <Route path="/profile" element={<Cuenta />} />
+
+          {/* paths a diferentes tabs de profile en Cuenta */}
+          <Route path="/profile/user-profile" element={<Cuenta />} />
+          <Route path="/profile/user-profile-settings" element={<Cuenta />} />
+          <Route path="/profile/user-profile-security" element={<Cuenta />} />
+          <Route path="/profile/user-billing" element={<Cuenta />} />
+
+          <Route path='/login' element={<Login />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </TaskContextProvider>
+    </div>
+
   )
 }
 
