@@ -14,6 +14,8 @@ import CompostRequest from './components/Routes/CompostRequest';
 import NotFound from './pages/NotFound'
 import { supabase } from './supabase/client'
 
+import Footer from './pages/footer';
+
 
 
 function App() {
@@ -33,7 +35,6 @@ function App() {
 
     <div className='App'>
       <TaskContextProvider>
-        {/* <Navbar /> */}
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
           <Route path="/" element={<Home />} />
@@ -56,6 +57,7 @@ function App() {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </TaskContextProvider>
+      <Footer />
     </div>
 
   )

@@ -1,0 +1,103 @@
+.footer {
+    padding: 4rem 6rem;
+    background: black;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    text-align: start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.top>div {
+    display: flex;
+    gap: 15px;
+}
+
+.top>div>div {
+    display: flex;
+    flex-direction: column;
+}
+
+.top img {
+    width: 85px;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.bottom {
+    display: flex;
+    padding-top: 1rem;
+    text-align: start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.bottom h1 {
+    margin-bottom: 15px;
+}
+
+.proyect-settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-columns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    /* Added this line */
+    width: 100%;
+    /* Added this line */
+}
+
+.bottom i {
+    color: white;
+    font-size: 2.5rem;
+    margin-left: 1.5rem;
+}
+
+.bottom i:hover {
+    color: #25685D;
+}
+
+.mails {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.mails a {
+    text-decoration: none;
+    color: white;
+    gap: 20px;
+}
+
+.mails a i {
+    font-size: 1.3rem;
+}
+
+.mails a:hover i {
+    color: #25685D;
+}
+
+.mails a:hover {
+    color: #25685D;
+}

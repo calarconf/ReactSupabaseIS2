@@ -1,11 +1,11 @@
 import Navbar from "../../pages/Navbar";
 import Hero from '../../pages/Hero';
+import Footer from '../../pages/footer';
 import nosotrosImg from "../img/assets/9.jpg";
 import visionImg from "../img/assets/4.jpg";
 import sergio from "../img/assets/sergio.jpg";
 import christian from "../img/assets/christian.jpg";
 import fabio from "../img/assets/fabio.jpg";
-import daniel from "../img/assets/daniel.png";
 import './nosotrosStyles.css';
 
 
@@ -38,18 +38,6 @@ function Nosotros() {
             <h2 className='Ustitle'>Our Team</h2>
 
             <div className="Uscontent">
-                {/* daniel */}
-                <div className="column">
-                    <div className="card">
-                        <img className="teamImg" src={daniel} alt="danielImg" />
-                        <div className="container">
-                            <h2>Daniel Felipe Ahumada Hernandez</h2>
-                            <p className="title"></p>
-                            <p></p>
-                            <p>dahumada@unal.edu.co</p>
-                        </div>
-                    </div>
-                </div>
                 {/* christian   */}
                 <div className="column">
                     <div className="card">
@@ -87,7 +75,6 @@ function Nosotros() {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }
