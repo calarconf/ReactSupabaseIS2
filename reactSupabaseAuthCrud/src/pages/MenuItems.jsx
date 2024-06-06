@@ -5,15 +5,10 @@ export const MenuItems = [
         cName: "nav-links",
         icon: "fa-solid fa-user"
     },
-    {
-        title: "Productos",
-        url: "/products",
-        cName: "nav-links",
-        icon: "fa-solid fa-circle-info"
-    },
+ 
     {
         title: "¡Empezar a Compostar!",
-        url: "/Compost-with-us",
+        url: "/compost-request",
         cName: "nav-links",
         icon: "fa-solid fa-leaf"
     },
