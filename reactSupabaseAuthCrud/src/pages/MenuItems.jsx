@@ -5,7 +5,6 @@ export const MenuItems = [
         cName: "nav-links",
         icon: "fa-solid fa-user"
     },
-
     {
         title: "Nosotros",
         url: "/us",
