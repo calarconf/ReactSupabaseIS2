@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ProfileTabsItems, profileConfigItems } from "./ProfileTabsItems";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import TaskList from "../TaskList";
 
 function Cuenta() {
     const [ProfileTabActiveTab, setProfileTabActive] = useState(4);
@@ -19,6 +20,8 @@ function Cuenta() {
             setUserProfileSettingsActiveTab(index);
         }
     };
+    const [showTaskDone, setShowTaskDone] = useState(false);
+
     // const [collects, setCollects] = useState([]);
     // const [editingCollect, setEditingCollect] = useState(null);
     // const [showEditForm, setShowEditForm] = useState(false);
@@ -237,13 +240,30 @@ function Cuenta() {
                         <div className="user-profile-settings" >
                             <ul className={ProfileTabActiveTab === 1 ?
                                 "active-collect-tabs active" : "active-colect-tabs"} >
-                                <h1 className="table-title">Recolectas activas sobre el usuarío</h1>
+                                {/* <h1 className="table-title"></h1> */}
+                                {/* <TaskList done={showTaskDone} /> */}
                                 {/* {renderTable()} */}
                             </ul>
                             <ul className={ProfileTabActiveTab === 2 ?
                                 "collect-record-tabs active" : "collect-record-tabs"} >
-                                <h1 className="table-title">Total de recolectas sobre el usuarío</h1>
-                                {/* {renderTableGeneral()} */}
+                                <>
+                                <div className="compost-request-container">
+                                    <div className="row pt-4">
+                                        <div className='col-md-4 offset-md-4'>
+                                            <header className='d-flex justify-content-between my3'>
+                                                <span className='h5'>
+                                                    {showTaskDone ? 'Historial de recolectas' : 'Recolectas activas'}
+                                                </span>
+                                                <button className='btn btn-dark btn-sm'
+                                                    onClick={() => setShowTaskDone(!showTaskDone)}>
+                                                    {showTaskDone ? 'Ver recolectas activas' : 'Ver historial de recolectas'}
+                                                </button>
+                                            </header>
+                                            <TaskList done={showTaskDone} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
                             </ul>
                             <ul className={ProfileTabActiveTab === 3 ?
                                 "follow-collect-tabs active" : "follow-collect-tabs"} >

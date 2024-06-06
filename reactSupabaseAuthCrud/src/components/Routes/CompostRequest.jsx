@@ -65,7 +65,7 @@ function CompostRequest() {
                 <div className="row pt-4">
                     <div className='col-md-4 offset-md-4'>
                         <TaskForm />
-                        <header className='d-flex justify-content-between my3'>
+                        {/* <header className='d-flex justify-content-between my3'>
                             <span className='h5'>
                                 {showTaskDone ? 'Historial de recolectas' : 'Recolectas activas'}
                             </span>
@@ -74,7 +74,7 @@ function CompostRequest() {
                                 {showTaskDone ? 'Ver recolectas activas' : 'Ver historial de recolectas'}
                             </button>
                         </header>
-                        <TaskList done={showTaskDone} />
+                        <TaskList done={showTaskDone} /> */}
                     </div>
                 </div>
             </div>
