@@ -1,9 +1,8 @@
 .compost-request-container {
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    position: absolute;
     width: 100%;
     padding: 120px;
 

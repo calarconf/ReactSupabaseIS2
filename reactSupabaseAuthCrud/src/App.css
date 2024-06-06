@@ -1,6 +1,7 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  min-height: 100vh;
 
 }
 
@@ -16,6 +17,7 @@ body {
   color: white;
   box-sizing: border-box;
   margin: 0;
+
 }
 
 * {

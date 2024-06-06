@@ -6,6 +6,7 @@ import './compostarStyles.css';
 function Compostar() {
     return (
         <>
+
             <Navbar />
             <Hero
                 cName="hero"
@@ -19,6 +20,7 @@ function Compostar() {
             <div className="why-compost">
                 <h1 className="title-why">¿Por qué recoger residuos orgánicos?</h1>
             </div>
+
         </>
     )
 }

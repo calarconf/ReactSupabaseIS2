@@ -1,18 +1,21 @@
 .wrapper {
-  padding-top: 120px; 
+  padding-top: 200px;
+  min-height: 100vh;
 }
+
 .terms-container {
   max-width: 50%;
   padding: 10px;
-  text-align: center; 
-  margin: auto; 
+  text-align: center;
+  margin: auto;
 }
 
 .button-submit {
-  width: 30%;   
-  padding: 10px 20px; 
-  font-size: 16px;    
+  width: 30%;
+  padding: 10px 20px;
+  font-size: 16px;
 }
+
 input[type="text"],
 input[type="password"],
 input[type="email"] {
@@ -23,9 +26,11 @@ input[type="email"] {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-h3{
-    color: #ccc;
+
+h3 {
+  color: #ccc;
 }
+
 .terms-container {
   margin-top: 20px;
 }
@@ -43,11 +48,10 @@ h3{
 }
 
 .terms-details ul {
-  list-style-type:square;
+  list-style-type: square;
   padding: 0;
 }
 
 .terms-details ul li {
   margin-bottom: 10px;
 }
-

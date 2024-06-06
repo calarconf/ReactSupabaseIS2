@@ -5,12 +5,7 @@ export const MenuItems = [
         cName: "nav-links",
         icon: "fa-solid fa-user"
     },
-    {
-        title: "Productos",
-        url: "/products",
-        cName: "nav-links",
-        icon: "fa-solid fa-circle-info"
-    },
+
     {
         title: "Nosotros",
         url: "/us",

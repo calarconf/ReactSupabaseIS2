@@ -3,4 +3,9 @@
     font-weight: 600;
     color: white;
     text-align: left;
+
+}
+
+.wrapper {
+    min-height: 100vh;
 }

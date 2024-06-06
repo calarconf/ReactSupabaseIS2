@@ -4,6 +4,9 @@ import Navbar from "./Navbar";
 import useLogin from "./useLogin";
 import "./LoginStyles.css";
 
+import { Link } from 'react-router-dom';
+import logo from "../components/img/Log.png";
+
 function Login() {
   const {
     email,
@@ -18,7 +21,14 @@ function Login() {
   return (
     <>
       <div className="container">
-        <Navbar />
+        <nav className="NavbarItems">
+          <Link className="nav-link-logo" to="/">
+            <div className="logoContainer">
+              <img src={logo} alt="Logo" />
+              <h1 className="navbar-logo" >Compostify</h1>
+            </div>
+          </Link>
+        </nav>
         <div className="wrapper">
           <div className="row pt-5" style={{ zIndex: 1 }}>
             <div className="col-md-4 offset-md-4">
