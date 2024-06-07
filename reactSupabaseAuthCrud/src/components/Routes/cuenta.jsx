@@ -324,7 +324,7 @@ function Cuenta() {
                     </div>
                 </div>
             </div>
-        </div >
+
 
         </>
     )
