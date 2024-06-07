@@ -1,16 +1,21 @@
 .compost-request-container {
     display: flex;
-
     min-height: 100vh;
     width: 100%;
-    padding: 120px;
+    padding: 1.5rem 1rem 1rem 2rem;
+    margin-top: 100px;
 }
 
 .row.pt-4 {
+    display: flex;
     align-items: center;
+    flex-direction: column;
+    padding: 1rem 1rem 1rem 1rem;
 }
 
 .how-to {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     text-align: end;
     justify-content: space-between;
@@ -18,5 +23,72 @@
     font-size: 1.8rem;
     font-weight: 600;
     color: white;
-    padding: 2rem 5rem 5rem 3rem;
+    padding: 3rem;
+    border-left: 3px solid #a7564470;
+
+    i {
+        padding: 0 20px 0 20px;
+    }
+
+    p1 {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+}
+
+.how-to-content {
+    display: flex;
+    text-align: start;
+    justify-content: center;
+    align-items: center;
+
+    .image-content {
+        width: 30%;
+        mask-image: linear-gradient(to left, #05161A 50%, transparent 100%);
+    }
+}
+
+.how-to-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.how-to-text-item {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.tables {
+    display: flex;
+}
+
+.table-content {
+
+    text-align: center;
+    width: 80%;
+    display: block;
+    padding: 1rem 1rem 1rem 1rem;
+    border-collapse: collapse;
+
+
+    h1 {
+        font-size: 2rem;
+
+    }
+}
+
+th,
+td {
+    padding: 15px;
+    border: 2px solid #fff;
+
+}
+
+th {
+    background: #25685D;
+}
+
+td {
+    font-size: 1.2rem;
 }
