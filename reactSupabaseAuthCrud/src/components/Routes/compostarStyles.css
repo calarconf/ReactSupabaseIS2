@@ -1,11 +1,64 @@
-.title-why {
-    font-size: 3rem;
+.who-compost {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 1.8rem;
     font-weight: 600;
     color: white;
-    text-align: left;
-
+    padding: 2rem 5rem 5rem 3rem;
 }
 
-.wrapper {
+.what-compost {
+    display: flex;
+    text-align: end;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    padding: 2rem 5rem 5rem 3rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+
+    p1 {
+        margin-top: 20px;
+        margin-left: 50px;
+        line-height: 1.5;
+    }
+}
+
+.image-content {
+    align-items: center;
+    display: block;
+    width: 20%;
+    margin-left: 100px;
+    object-fit: cover;
+    opacity: 0.8;
+    mask-image: linear-gradient(to right, #05161A 50%, transparent 100%);
+}
+
+
+
+.why-compost {
+    display: flex;
+    text-align: start;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    padding: 2rem 5rem 5rem 3rem;
+
+    .image-content {
+        mask-image: linear-gradient(to left, #05161A 50%, transparent 100%);
+    }
+}
+
+.container {
     min-height: 100vh;
 }

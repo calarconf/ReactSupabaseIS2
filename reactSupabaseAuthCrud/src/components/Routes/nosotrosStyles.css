@@ -51,10 +51,9 @@
 
 .Uscontent {
     display: flex;
-    text-align: center;
     width: 80%;
-    align-items: center;
     margin-left: 10%;
+
 
 
     .teamImg {
@@ -71,6 +70,8 @@
             background-color: #25685D;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             margin: 8px;
+
+            height: 500px;
 
             .container {
                 padding: 0 16px;
@@ -100,6 +101,10 @@
 
 .container {
     padding: 0 16px;
+}
+
+.full-container {
+    min-height: 100vh;
 }
 
 @media screen and (max-width: 1000px) {

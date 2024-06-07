@@ -32,34 +32,35 @@ function App() {
 
   }, [])
   return (
+    <>
+      <div className='App'>
+        <TaskContextProvider>
+          <Routes>
+            {/* <Route path="/" element={<Home />} /> */}
+            <Route path="/" element={<Home />} />
+            <Route path="/us" element={<Nosotros />} />
+            <Route path="/compost-request" element={<CompostRequest />} />
 
-    <div className='App'>
-      <TaskContextProvider>
-        <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<Home />} />
-          <Route path="/us" element={<Nosotros />} />
-          <Route path="/compost-request" element={<CompostRequest />} />
+            {/* paths a diferentes tabs de profile en Cuenta */}
+            <Route path="/active-collects" element={<Cuenta />} />
+            <Route path="/collect-record" element={<Cuenta />} />
+            <Route path="/follow-up" element={<Cuenta />} />
+            <Route path="/profile" element={<Cuenta />} />
 
-          {/* paths a diferentes tabs de profile en Cuenta */}
-          <Route path="/active-collects" element={<Cuenta />} />
-          <Route path="/collect-record" element={<Cuenta />} />
-          <Route path="/follow-up" element={<Cuenta />} />
-          <Route path="/profile" element={<Cuenta />} />
+            {/* paths a diferentes tabs de profile en Cuenta */}
+            <Route path="/profile/user-profile" element={<Cuenta />} />
+            <Route path="/profile/user-profile-settings" element={<Cuenta />} />
+            <Route path="/profile/user-profile-security" element={<Cuenta />} />
+            <Route path="/profile/user-billing" element={<Cuenta />} />
 
-          {/* paths a diferentes tabs de profile en Cuenta */}
-          <Route path="/profile/user-profile" element={<Cuenta />} />
-          <Route path="/profile/user-profile-settings" element={<Cuenta />} />
-          <Route path="/profile/user-profile-security" element={<Cuenta />} />
-          <Route path="/profile/user-billing" element={<Cuenta />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </TaskContextProvider>
+        <Footer />
+      </div>
 
-          <Route path='/login' element={<Login />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-      </TaskContextProvider>
-      <Footer />
-    </div>
-
+    </>
   )
 }
 
