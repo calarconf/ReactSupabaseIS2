@@ -61,7 +61,7 @@ function TaskForm() {
             value={taskName}
             className='form-control mb-2'
             />
-            <button disabled={adding} className='btn btn-primary btn-sm'>
+            <button onClick={handleClick} disabled={adding} className='btn btn-primary btn-sm'>
                 {adding ? 'Solicitando...' : 'Solicitar'}
             </button>
             {/* <button onClick={handleClick}>Pagar</button> */}

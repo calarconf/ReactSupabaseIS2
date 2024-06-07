@@ -21,16 +21,16 @@ import Footer from './pages/footer';
 function App() {
   const navigate = useNavigate()
 
-  useEffect(() => {
-    supabase.auth.onAuthStateChange((event, session) => {
-      if (!session) {
-        navigate('/login')
-      } else {
-        navigate('/')
-      }
-    })
+  // useEffect(() => {
+  //   supabase.auth.onAuthStateChange((event, session) => {
+  //     if (!session) {
+  //       navigate('/login')
+  //     } else {
+  //       navigate('/')
+  //     }
+  //   })
 
-  }, [])
+  // }, [])
   return (
     <>
       <div className='App'>

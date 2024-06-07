@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ProfileTabsItems, profileConfigItems } from "./ProfileTabsItems";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import TaskList from "../TaskList";
 
 function Cuenta() {
     const [ProfileTabActiveTab, setProfileTabActive] = useState(4);
@@ -19,6 +20,8 @@ function Cuenta() {
             setUserProfileSettingsActiveTab(index);
         }
     };
+    const [showTaskDone, setShowTaskDone] = useState(false);
+
     // const [collects, setCollects] = useState([]);
     // const [editingCollect, setEditingCollect] = useState(null);
     // const [showEditForm, setShowEditForm] = useState(false);
@@ -196,109 +199,124 @@ function Cuenta() {
     return (
         <>
             <Navbar />
-            <div className="container">
-                <body className='cuenta-main-region'>
-                </body >
-                <div className='main-content'>
-                    <div className='user-profile-layout'>
-                        <div className='profile-container'>
-                            <div className='main-panel'>
-                                <div className='avatar-panel'>
-                                    <div className='user-avatar own'>
-                                        <Link className="avatar">
-                                            <img src={avatar} alt="Logo" className="ig-avatar" ></img>
-                                        </Link>
+            <body className='cuenta-main-region'>
+            </body >
+            <div className='main-content'>
+                <div className='user-profile-layout'>
+                    <div className='profile-container'>
+                        <div className='main-panel'>
+                            <div className='avatar-panel'>
+                                <div className='user-avatar own'>
+                                    <Link className="avatar">
+                                        <img src={avatar} alt="Logo" className="ig-avatar" ></img>
+                                    </Link>
+                                </div>
+                                <div className="user-links">
+                                    <div className='item title'>
+                                        <span className="user-nickname placeholder-nickname">
+                                            Compostify-User
+                                        </span>
                                     </div>
-                                    <div className="user-links">
-                                        <div className='item title'>
-                                            <span className="user-nickname placeholder-nickname">
-                                                Compostify-User
-                                            </span>
-                                        </div>
-                                        <div className='ig-profile-info-date'>Miembro desde: abr 03, 2024</div>
-                                    </div>
+                                    <div className='ig-profile-info-date'>Miembro desde: abr 03, 2024</div>
                                 </div>
                             </div>
-                            <div className='separator'></div>
-                            <ul className="user-profile-tabs" >
-                                <i className="fa-solid fa-chevron-right"></i>
-                                {ProfileTabsItems.map((item, index) => {
-                                    return (
-                                        <li key={index} onClick={() => handleProfileTab(index)}>
-                                            <Link className={ProfileTabActiveTab === index ?
-                                                item.cNameActive : item.cName} to={item.url}>
-                                                <i className={item.icon}></i>
-                                                {item.title}
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
+                        </div>
+                        <div className='separator'></div>
+                        <ul className="user-profile-tabs" >
+                            <i className="fa-solid fa-chevron-right"></i>
+                            {ProfileTabsItems.map((item, index) => {
+                                return (
+                                    <li key={index} onClick={() => handleProfileTab(index)}>
+                                        <Link className={ProfileTabActiveTab === index ?
+                                            item.cNameActive : item.cName} to={item.url}>
+                                            <i className={item.icon}></i>
+                                            {item.title}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                        <div className="separator"></div>
+                        <div className="user-profile-settings" >
+                            <ul className={ProfileTabActiveTab === 1 ?
+                                "active-collect-tabs active" : "active-colect-tabs"} >
+                                {/* <h1 className="table-title"></h1> */}
+                                {/* <TaskList done={showTaskDone} /> */}
+                                {/* {renderTable()} */}
+                            </ul>
+                            <ul className={ProfileTabActiveTab === 2 ?
+                                "collect-record-tabs active" : "collect-record-tabs"} >
+                                <>
+                                    <div className="compost-request-container">
+                                        <div className="row pt-4">
+                                            <div className='col-md-4 offset-md-4'>
+                                                <header className='d-flex justify-content-between my3'>
+                                                    <span className='h5'>
+                                                        {showTaskDone ? 'Historial de recolectas' : 'Recolectas activas'}
+                                                    </span>
+                                                    <button className='btn btn-dark btn-sm'
+                                                        onClick={() => setShowTaskDone(!showTaskDone)}>
+                                                        {showTaskDone ? 'Ver recolectas activas' : 'Ver historial de recolectas'}
+                                                    </button>
+                                                </header>
+                                                <TaskList done={showTaskDone} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                            </ul>
+                            <ul className={ProfileTabActiveTab === 3 ?
+                                "follow-collect-tabs active" : "follow-collect-tabs"} >
+                                <h1>hello3</h1>
+                            </ul>
+                            <ul className={ProfileTabActiveTab === 4 ?
+                                "user-profile-settings-tabs active" : "user-profile-settings-tabs"} >
+                                {
+                                    profileConfigItems.map((item, index) => {
+                                        return (
+                                            <li key={index} onClick={() => handleUserProfileSettings(index)}>
+                                                <Link className={UserProfileSettingsActiveTab === index
+                                                    ? item.cNameActive : item.cName} to={item.url}>
+                                                    <i className={item.icon}></i>
+                                                    <div className="lines">
+                                                        <span className="title">{item.title}</span>
+                                                        <span>{item.content}</span>
+                                                    </div>
+                                                    <div className="fa-solid fa-chevron-right"></div>
+                                                </Link>
+                                            </li>
+                                        );
+                                    })
+                                }
                             </ul>
                             <div className="separator"></div>
-                            <div className="user-profile-settings" >
-                                <ul className={ProfileTabActiveTab === 1 ?
-                                    "active-collect-tabs active" : "active-colect-tabs"} >
-                                    <h1 className="table-title">Recolectas activas sobre el usuarío</h1>
-                                    {/* {renderTable()} */}
-                                </ul>
-                                <ul className={ProfileTabActiveTab === 2 ?
-                                    "collect-record-tabs active" : "collect-record-tabs"} >
-                                    <h1 className="table-title">Total de recolectas sobre el usuarío</h1>
-                                    {/* {renderTableGeneral()} */}
-                                </ul>
-                                <ul className={ProfileTabActiveTab === 3 ?
-                                    "follow-collect-tabs active" : "follow-collect-tabs"} >
-                                    <h1>hello3</h1>
-                                </ul>
-                                <ul className={ProfileTabActiveTab === 4 ?
-                                    "user-profile-settings-tabs active" : "user-profile-settings-tabs"} >
-                                    {
-                                        profileConfigItems.map((item, index) => {
-                                            return (
-                                                <li key={index} onClick={() => handleUserProfileSettings(index)}>
-                                                    <Link className={UserProfileSettingsActiveTab === index
-                                                        ? item.cNameActive : item.cName} to={item.url}>
-                                                        <i className={item.icon}></i>
-                                                        <div className="lines">
-                                                            <span className="title">{item.title}</span>
-                                                            <span>{item.content}</span>
-                                                        </div>
-                                                        <div className="fa-solid fa-chevron-right"></div>
-                                                    </Link>
-                                                </li>
-                                            );
-                                        })
-                                    }
-                                </ul>
-                                <div className="separator"></div>
-                                <div className="settings-content">
-                                    <div className="tab-content-settings">
-                                        {/* <div className={UserProfileSettingsActiveTab === 0 && ProfileTabActiveTab === 4 ?
+                            <div className="settings-content">
+                                <div className="tab-content-settings">
+                                    {/* <div className={UserProfileSettingsActiveTab === 0 && ProfileTabActiveTab === 4 ?
                                         "profile-info active" : "profile-info"}></div> */}
-                                        <div className={UserProfileSettingsActiveTab === 1 && ProfileTabActiveTab === 4 ?
-                                            "profile-info active" : "profile-info"}>
-                                            <div className="nickavatar">
-                                                <div className="avatar-picture">
-                                                    <span className="settings-subtitle">Foto de perfil</span>
-                                                    <div className="ig-profile-avatar-edit">
-                                                        <Link className="avatar">
-                                                            <img src={avatar} alt="Logo" className="ig-avatar" ></img>
-                                                        </Link>
-                                                        <i className="fa-solid fa-camera"></i> .jpg .png
-                                                        <form className='ig-profile-avatar-editor'>
-                                                            <input type="file" name="avatar"></input>
-                                                            <input type="submit" className='ig-gradient-btn-pre'></input>
-                                                            <input type="hidden" name="process" value="update_avatar"></input>
-                                                        </form>
-                                                    </div>
+                                    <div className={UserProfileSettingsActiveTab === 1 && ProfileTabActiveTab === 4 ?
+                                        "profile-info active" : "profile-info"}>
+                                        <div className="nickavatar">
+                                            <div className="avatar-picture">
+                                                <span className="settings-subtitle">Foto de perfil</span>
+                                                <div className="ig-profile-avatar-edit">
+                                                    <Link className="avatar">
+                                                        <img src={avatar} alt="Logo" className="ig-avatar" ></img>
+                                                    </Link>
+                                                    <i className="fa-solid fa-camera"></i> .jpg .png
+                                                    <form className='ig-profile-avatar-editor'>
+                                                        <input type="file" name="avatar"></input>
+                                                        <input type="submit" className='ig-gradient-btn-pre'></input>
+                                                        <input type="hidden" name="process" value="update_avatar"></input>
+                                                    </form>
                                                 </div>
-                                                <div class="separator"></div>
                                             </div>
-                                            {/* <div className={UserProfileSettingsActiveTab === 2 && ProfileTabActiveTab === 4 ?
+                                            <div class="separator"></div>
+                                        </div>
+                                        {/* <div className={UserProfileSettingsActiveTab === 2 && ProfileTabActiveTab === 4 ?
                                             "profile-info active" : "profile-info"}></div>
                                         <div className={UserProfileSettingsActiveTab === 3 && ProfileTabActiveTab === 4 ?
                                             "profile-info active" : "profile-info"}></div> */}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -306,6 +324,7 @@ function Cuenta() {
                     </div>
                 </div>
             </div>
+        </div >
 
         </>
     )
