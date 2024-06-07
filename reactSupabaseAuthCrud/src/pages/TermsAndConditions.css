@@ -1,0 +1,80 @@
+
+.NavbarItems {
+
+  width: 80%;
+
+}
+
+.terms-conditions {
+  padding: 20px;
+  max-width: 50%;
+  margin: 150px auto;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: justify;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/}
+
+
+.terms-conditions h1 {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.terms-conditions h2 {
+  font-size: 1.5em;
+  color: #555;
+  margin-top: 20px;
+}
+
+.terms-conditions p, .terms-conditions ul {
+  margin-bottom: 20px;
+}
+
+.terms-conditions ul {
+  list-style-type: disc;
+  padding-left: 40px;
+}
+
+.terms-conditions li {
+  margin-bottom: 10px;
+}
+
+.terms-conditions a {
+  color: #f9f9f9;
+  text-decoration: none;
+}
+
+.terms-conditions a:hover {
+  text-decoration: underline;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.accept-button,
+.reject-button {
+    width: 40%;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.accept-button {
+  background-color: #327334;
+  color: white;
+}
+
+.reject-button {
+  background-color: #273c28;
+  color: white;
+}

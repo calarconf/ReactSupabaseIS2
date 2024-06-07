@@ -14,6 +14,7 @@ import CompostRequest from './components/Routes/CompostRequest';
 import NotFound from './pages/NotFound'
 import { supabase } from './supabase/client'
 
+import TermsAndConditions from './pages/TermsAndConditions';
 import Footer from './pages/footer';
 
 
@@ -53,6 +54,7 @@ function App() {
             <Route path="/profile/user-profile-security" element={<Cuenta />} />
             <Route path="/profile/user-billing" element={<Cuenta />} />
 
+            <Route path="/terms" element={<TermsAndConditions />} />
             <Route path='/login' element={<Login />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
