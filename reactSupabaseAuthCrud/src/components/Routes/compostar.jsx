@@ -52,14 +52,7 @@ function Compostar() {
                     </div>
                     <img className="image-content" alt="png2" src={png2} />
                 </div>
-                <div className='how_to'>
-                    <h1 className="title">
-
-                    </h1>
-                </div>
             </div>
-
-
         </>
     )
 }

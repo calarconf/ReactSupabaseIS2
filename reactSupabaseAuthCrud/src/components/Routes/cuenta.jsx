@@ -8,7 +8,7 @@ import axios from 'axios';
 import TaskList from "../TaskList";
 
 function Cuenta() {
-    const [ProfileTabActiveTab, setProfileTabActive] = useState(4);
+    const [ProfileTabActiveTab, setProfileTabActive] = useState(2);
     const handleProfileTab = (index) => {
         if (ProfileTabActiveTab !== index) {
             setProfileTabActive(index);
@@ -223,7 +223,7 @@ function Cuenta() {
                         </div>
                         <div className='separator'></div>
                         <ul className="user-profile-tabs" >
-                            <i className="fa-solid fa-chevron-right"></i>
+
                             {ProfileTabsItems.map((item, index) => {
                                 return (
                                     <li key={index} onClick={() => handleProfileTab(index)}>
@@ -244,7 +244,7 @@ function Cuenta() {
                                 {/* <TaskList done={showTaskDone} /> */}
                                 {/* {renderTable()} */}
                             </ul>
-                            <ul className={ProfileTabActiveTab === 2 ?
+                            <ul className={ProfileTabActiveTab === 1 ?
                                 "collect-record-tabs active" : "collect-record-tabs"} >
                                 <>
                                     <div className="compost-request-container">
@@ -265,11 +265,8 @@ function Cuenta() {
                                     </div>
                                 </>
                             </ul>
-                            <ul className={ProfileTabActiveTab === 3 ?
-                                "follow-collect-tabs active" : "follow-collect-tabs"} >
-                                <h1>hello3</h1>
-                            </ul>
-                            <ul className={ProfileTabActiveTab === 4 ?
+
+                            <ul className={ProfileTabActiveTab === 2 ?
                                 "user-profile-settings-tabs active" : "user-profile-settings-tabs"} >
                                 {
                                     profileConfigItems.map((item, index) => {

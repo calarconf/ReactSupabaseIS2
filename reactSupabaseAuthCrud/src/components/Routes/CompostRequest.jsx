@@ -77,6 +77,11 @@ function CompostRequest() {
                         <TaskList done={showTaskDone} /> */}
                     </div>
                 </div>
+                <div className="separator"></div>
+                <div className="how-to">
+                    <h1>Recuerda que</h1>
+                </div>
+
             </div>
         </>
     );

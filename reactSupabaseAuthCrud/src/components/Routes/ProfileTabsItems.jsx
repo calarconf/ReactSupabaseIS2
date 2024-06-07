@@ -5,23 +5,12 @@ export const ProfileTabsItems = [
         cName: "profile-tab-links-colection",
         cNameActive: "profile-tab-links-colection active",
     },
-    {
-        title: "Recolectas activas",
-        url: "/active-collects",
-        cName: "profile-tab-links-active-collects",
-        cNameActive: "profile-tab-links-active-collects active",
-    },
+
     {
         title: "Historial de recolectas",
         url: "/collect-record",
         cName: "profile-tab-links-record",
         cNameActive: "profile-tab-links-record active",
-    },
-    {
-        title: "Seguimiento de recolección",
-        url: "/follow-up",
-        cName: "profile-tab-links-follow-up",
-        cNameActive: "profile-tab-links-follow-up active",
     },
     {
         title: "Configuración",
