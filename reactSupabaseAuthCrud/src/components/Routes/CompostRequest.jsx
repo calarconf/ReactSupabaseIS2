@@ -66,6 +66,7 @@ function CompostRequest() {
             <Navbar />
             <div className="compost-request-container">
                 <div className="row pt-4">
+                    <h1>Realiza tu solicitud de recolección aqui:</h1>
                     <div className='col-md-4 offset-md-4'>
                         <TaskForm />
                         {/* <header className='d-flex justify-content-between my3'>

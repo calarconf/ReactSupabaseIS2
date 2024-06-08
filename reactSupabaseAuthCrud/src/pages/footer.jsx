@@ -6,17 +6,17 @@ import logo from "../components/img/Log.png";
 const Footer = () => {
     return (
         <div className="footer">
-            <div className="top">
-                <div>
-                    <img src={logo} alt="Logo" />
+
+            <div className="bottom">
+                <div className="top">
                     <div>
-                        <h1>Compostify</h1>
-                        <p>Juntos hacia una tierra más fértil.</p>
+                        <img src={logo} alt="Logo" />
+                        <div>
+                            <h1>Compostify</h1>
+                            <p>Juntos hacia una tierra más fértil.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="bottom">
-                <div></div>
                 <div></div>
                 <div className="proyect-settings">
                     <div className="footer-columns">
