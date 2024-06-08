@@ -9,12 +9,12 @@ const usuario = await supabase.auth.getUser();
 class Navbar extends Component {
     state = { clicked: false, isAuthenticated: false};
     handleClick = () => {
-        this.setState({ clicked: !this.state.clicked })
+        this.setState({ clicked: !this.state.clicked });
     };
     async componentDidMount() {
         // Verificar si el usuario está autenticado
         // const usuario = supabase.auth.getUser();
-        const { data: { session } } = await supabase.auth.getSession()
+        const { data: { session } } = await supabase.auth.getSession();
         if (session) {
             this.setState({ isAuthenticated: true });
         }else{
@@ -74,17 +74,7 @@ class Navbar extends Component {
                         )
                            
                     }
-                    {/* <Link to="/Login">
-                        <button>
-                            Iniciar Sesión
-                        </button>
-                    </Link> */}
-                    {/*
-                    <Link to="/">
-                        <button onClick={async()=> await supabase.auth.signOut()}>
-                            Logout
-                        </button>
-                    </Link> */}
+                    
                 </ul>
             </nav>
         );
