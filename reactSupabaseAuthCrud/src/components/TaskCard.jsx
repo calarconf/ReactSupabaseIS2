@@ -1,34 +1,34 @@
 import React from 'react'
 import { useTasks } from '../context/TaskContext'
 
-function TaskCard({task}) {
+function TaskCard({ task }) {
 
-    const {deleteTask, updateTask} = useTasks();
+    const { deleteTask, updateTask } = useTasks();
 
-    const handleDelete = () =>{
-        deleteTask(task.id);    
+    const handleDelete = () => {
+        deleteTask(task.id);
     }
-    const handleToggleDone = () =>{
-        updateTask(task.id, {done: !task.done })
+    const handleToggleDone = () => {
+        updateTask(task.id, { done: !task.done })
 
     }
-    const handleEdit = () =>{
+    const handleEdit = () => {
         alert('Edit')
     }
 
-  return (
-    <div className='card card-body mb-3'>
-        <h1 className='h5'>
-            {`${task.id}.  ${task.name}`}
-        </h1>
-        <p> {task.done ? "Completada ✔️": "No completada❌"} </p>
-        <div className='ms-auto'>
-            <button className='btn btn-danger btn-sm me-1' onClick={() => handleDelete()}>Delete</button>
-            <button className='btn btn-danger btn-sm me-1' onClick={() => handleToggleDone()}>Done</button>
-            <button className='btn btn-danger btn-sm me-1' onClick={() => handleEdit()}>Edit</button>
+    return (
+        <div className='history-card card-body mb-3'>
+            <h1 className='h5'>
+                {`${task.id}.  ${task.name}`}
+            </h1>
+            <p> {task.done ? "Completada ✔️" : "No completada❌"} </p>
+            <div className='ms-auto'>
+                <button className='btn btn-danger btn-sm me-1' onClick={() => handleDelete()}>Delete</button>
+                <button className='btn btn-danger btn-sm me-1' onClick={() => handleToggleDone()}>Done</button>
+                <button className='btn btn-danger btn-sm me-1' onClick={() => handleEdit()}>Edit</button>
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default TaskCard

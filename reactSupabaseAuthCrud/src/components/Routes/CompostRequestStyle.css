@@ -14,7 +14,8 @@
 
     flex-direction: column;
     padding: 1rem 1rem 1rem 1rem;
-    min-width: 550px;  
+    min-width: 550px;
+    max-width: 551px;
 
 }
 

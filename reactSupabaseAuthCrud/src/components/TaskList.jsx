@@ -4,28 +4,28 @@ import { useEffect } from 'react';
 import TaskCard from './TaskCard';
 
 
-function TaskList({done = false}) {
-    const {tasks, getTasks, loading} = useTasks();
+function TaskList({ done = false }) {
+    const { tasks, getTasks, loading } = useTasks();
 
-    useEffect(() =>{
+    useEffect(() => {
         getTasks(done);
     }, [done]);
 
-    function renderTasks(){
-        if(loading){
+    function renderTasks() {
+        if (loading) {
             return <h1>Cargando...</h1>
-        }else if(tasks.length === 0){
+        } else if (tasks.length === 0) {
             return <h1>No hay recolectas</h1>
-        
-        }else{
+
+        } else {
             return (
                 <div>
                     {
-                        tasks.map(task =>(
-                            <TaskCard key={task.id} task={task}/>
+                        tasks.map(task => (
+                            <TaskCard key={task.id} task={task} />
                         ))
                     }
-        
+
                 </div>
             )
         }
@@ -33,7 +33,7 @@ function TaskList({done = false}) {
     return <div>
         {renderTasks()}
     </div>
-    
+
 }
 
 export default TaskList

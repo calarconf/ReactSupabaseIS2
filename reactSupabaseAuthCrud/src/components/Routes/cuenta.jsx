@@ -239,26 +239,20 @@ function Cuenta() {
                         <div className="separator"></div>
                         <div className="user-profile-settings" >
                             <ul className={ProfileTabActiveTab === 1 ?
-                                "active-collect-tabs active" : "active-colect-tabs"} >
-                                {/* <h1 className="table-title"></h1> */}
-                                {/* <TaskList done={showTaskDone} /> */}
-                                {/* {renderTable()} */}
-                            </ul>
-                            <ul className={ProfileTabActiveTab === 1 ?
                                 "collect-record-tabs active" : "collect-record-tabs"} >
                                 <>
-                                    <div className="compost-request-container">
-                                        <div className="row pt-4">
-                                            <div className='col-md-4 offset-md-4'>
-                                                <header className='d-flex justify-content-between my3'>
-                                                    <span className='h5'>
-                                                        {showTaskDone ? 'Historial de recolectas' : 'Recolectas activas'}
-                                                    </span>
-                                                    <button className='btn btn-dark btn-sm'
-                                                        onClick={() => setShowTaskDone(!showTaskDone)}>
-                                                        {showTaskDone ? 'Ver recolectas activas' : 'Ver historial de recolectas'}
-                                                    </button>
-                                                </header>
+                                    <div className="compost-request-history">
+                                        <div className="history-container pt-4">
+                                            <header className='history-container-title justify-content-between my3'>
+                                                <span className='h5'>
+                                                    {showTaskDone ? 'Historial de recolectas' : 'Recolectas activas'}
+                                                </span>
+                                                <button className='history-container-title-bttn btn-dark btn-sm'
+                                                    onClick={() => setShowTaskDone(!showTaskDone)}>
+                                                    {showTaskDone ? 'Ver recolectas activas' : 'Ver historial de recolectas'}
+                                                </button>
+                                            </header>
+                                            <div className='history-container-list offset-md-4'>
                                                 <TaskList done={showTaskDone} />
                                             </div>
                                         </div>
