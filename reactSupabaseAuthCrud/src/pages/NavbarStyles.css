@@ -55,8 +55,8 @@
 }
 
 .nav-links:hover {
-    background-color: #0C7078;
-    color: #072E33;
+    /* background-color: #6BA2A9; */
+    color: #6BA2A9;
     border-radius: 4px;
     transition: all 0.3s ease-in-out;
 }
@@ -78,7 +78,7 @@ button {
     border: none;
     cursor: pointer;
     background-color: #072E33;
-    color: #0C7078;
+    color: white;
     transition: 0.2s ease-in-out;
 }
 

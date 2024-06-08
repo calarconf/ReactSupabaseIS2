@@ -100,9 +100,6 @@
     color: white;
 }
 
-.container {
-    padding: 0 16px;
-}
 
 .full-container {
     min-height: 110vh;
