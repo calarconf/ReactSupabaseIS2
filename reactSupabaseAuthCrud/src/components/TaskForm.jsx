@@ -24,8 +24,8 @@ const libraries = ['places'];
 
 function TaskForm() {
     const [taskName, setTaskName] = useState('');
-    const [organicWasteAmount, setOrganicWasteAmount] = useState(0); // Nuevo estado para la cantidad de desechos orgánicos
-    const [price, setPrice] = useState(0); // Nuevo estado para el precio calculado
+    const [organicWasteAmount, setOrganicWasteAmount] = useState("");
+    const [price, setPrice] = useState(0); 
     const [errors, setErrors] = useState({});
     const { createTask, adding } = useTasks();
     const [preferenceId, setPreferenceId] = useState(null);
@@ -48,7 +48,7 @@ function TaskForm() {
             const response = await axios.post("http://localhost:3000/create_preference", {
                 title: "Recolecta",
                 quantity: 1,
-                price: price, // Usa el precio calculado
+                price: price, 
             }, {
                 headers: {
                     'X-Idempotency-Key': idempotencyKey,
@@ -80,7 +80,7 @@ function TaskForm() {
                 setOrganicWasteAmount(0);
                 setErrors({});
                 setPreferenceId(null);
-                alert('Tarea creada con éxito');
+                alert('Recolecta creada con éxito');
             }, 7000);
         }
     };
@@ -117,7 +117,7 @@ function TaskForm() {
             const location = place.geometry.location;
             setMarkerPosition({ lat: location.lat(), lng: location.lng() });
             setAddress(place.formatted_address);
-            setTaskName(place.formatted_address); // Actualiza taskName con la dirección seleccionada
+            setTaskName(place.formatted_address); 
             console.log(place.formatted_address);
         } else {
             console.log('Autocomplete is not loaded yet!');
@@ -129,7 +129,6 @@ function TaskForm() {
         const lng = e.latLng.lng();
         setMarkerPosition({ lat, lng });
 
-        // Use Geocoding API to get the address from lat, lng
         const geocodeResponse = await axios.get(
             `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyCqB_5LmUTQ6f9fOd-nGPZlxEXAp9PQezw`
         );
@@ -148,7 +147,7 @@ function TaskForm() {
                 placeholder="Dirección"
                 onChange={(e) => setTaskName(e.target.value)}
                 value={taskName}
-                className={styles['form-control']} // Usa las clases CSS importadas
+                className={styles['form-control']} 
             />
             {errors.taskName && <p className={styles.error}>{errors.taskName}</p>}
             <input
@@ -157,7 +156,7 @@ function TaskForm() {
                 placeholder="Cantidad de desechos orgánicos"
                 onChange={(e) => setOrganicWasteAmount(parseInt(e.target.value))}
                 value={organicWasteAmount}
-                className={styles['form-control']} // Usa las clases CSS importadas
+                className={styles['form-control']} 
             />
             {errors.organicWasteAmount && <p className={styles.error}>{errors.organicWasteAmount}</p>}
             <p className={styles.price}>Precio: {price} COP</p>

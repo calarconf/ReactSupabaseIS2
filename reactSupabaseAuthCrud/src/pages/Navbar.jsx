@@ -4,16 +4,35 @@ import { MenuItems } from "./MenuItems";
 import logo from "../components/img/Log.png";
 import { Link } from 'react-router-dom';
 import { supabase } from "../supabase/client";
+// const usuario = await supabase.auth.getUser();
 
 class Navbar extends Component {
-    state = { clicked: false };
+    state = { clicked: false, isAuthenticated: false};
     handleClick = () => {
-        this.setState({ clicked: !this.state.clicked })
+        this.setState({ clicked: !this.state.clicked });
+    };
+    async componentDidMount() {
+        // Verificar si el usuario está autenticado
+        // const usuario = supabase.auth.getUser();
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session) {
+            this.setState({ isAuthenticated: true });
+        }else{
+            this.setState({ isAuthenticated: false });
+        
+        }
     }
+    handleLogout = async () => {
+        await supabase.auth.signOut();
+        this.setState({ isAuthenticated: false });
+    };
+    // const[usuario, setUsuario] = useState(null);
     // const usuario = await supabase.auth.getUser();
     // console.log(usuario.data.user.aud)
     // me devuelve authenticated
     render() {
+        const { isAuthenticated, clicked } = this.state;
+
         return (
             <nav className="NavbarItems">
                 <Link className="nav-link-logo" to="/">
@@ -39,16 +58,23 @@ class Navbar extends Component {
                             </li>
                         );
                     })}
-                    <Link to="/Login">
-                        <button>
-                            Iniciar Sesión
-                        </button>
-                    </Link>
-                    <Link to="/">
-                        <button onClick={async()=> await supabase.auth.signOut()}>
+                    {
+                        isAuthenticated ? (
+                            <Link to="/">
+                            <button onClick={async()=> await supabase.auth.signOut()}>
                             Logout
-                        </button>
-                    </Link>
+                            </button>
+                            </Link>
+                        ):(
+                            <Link to="/Login">
+                                <button>
+                                    Iniciar Sesión
+                                </button>
+                            </Link>
+                        )
+                           
+                    }
+                    
                 </ul>
             </nav>
         );
