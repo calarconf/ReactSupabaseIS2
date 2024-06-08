@@ -3,13 +3,16 @@ import "./NavbarStyles.css";
 import { MenuItems } from "./MenuItems";
 import logo from "../components/img/Log.png";
 import { Link } from 'react-router-dom';
-
+import { supabase } from "../supabase/client";
 
 class Navbar extends Component {
     state = { clicked: false };
     handleClick = () => {
         this.setState({ clicked: !this.state.clicked })
     }
+    // const usuario = await supabase.auth.getUser();
+    // console.log(usuario.data.user.aud)
+    // me devuelve authenticated
     render() {
         return (
             <nav className="NavbarItems">
@@ -39,6 +42,11 @@ class Navbar extends Component {
                     <Link to="/Login">
                         <button>
                             Iniciar Sesión
+                        </button>
+                    </Link>
+                    <Link to="/">
+                        <button onClick={async()=> await supabase.auth.signOut()}>
+                            Logout
                         </button>
                     </Link>
                 </ul>

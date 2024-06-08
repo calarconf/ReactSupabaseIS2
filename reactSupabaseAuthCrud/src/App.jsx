@@ -20,14 +20,14 @@ import Footer from './pages/footer';
 
 
 function App() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   // useEffect(() => {
   //   supabase.auth.onAuthStateChange((event, session) => {
   //     if (!session) {
   //       navigate('/login')
   //     } else {
-  //       navigate('/')
+  //       navigate('/profile')
   //     }
   //   })
 
