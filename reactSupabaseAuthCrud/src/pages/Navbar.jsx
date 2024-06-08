@@ -4,7 +4,7 @@ import { MenuItems } from "./MenuItems";
 import logo from "../components/img/Log.png";
 import { Link } from 'react-router-dom';
 import { supabase } from "../supabase/client";
-const usuario = await supabase.auth.getUser();
+// const usuario = await supabase.auth.getUser();
 
 class Navbar extends Component {
     state = { clicked: false, isAuthenticated: false};
