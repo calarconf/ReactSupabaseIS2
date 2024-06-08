@@ -42,7 +42,7 @@ function Nosotros() {
                     <div className="column">
                         <div className="card">
                             <img className="teamImg" src={christian} alt="christianImg" />
-                            <div className="container">
+                            <div className="person-container">
                                 <h2>Cristhian Alejandro Alarcón Florido</h2>
                                 <p className="title">Product Owner/Programmer</p>
                                 <p>Front-end Programmer</p>
@@ -54,7 +54,7 @@ function Nosotros() {
                     <div className="column">
                         <div className="card">
                             <img className="teamImg" src={fabio} alt="fabioImg" />
-                            <div className="container">
+                            <div className="person-container">
                                 <h2>Fabio Esteban Murcia Martínez</h2>
                                 <p className="title">Programmer</p>
                                 <p>Database Programmer</p>
@@ -66,7 +66,7 @@ function Nosotros() {
                     <div className="column">
                         <div className="card">
                             <img className="teamImg" src={sergio} alt="sergioImg" />
-                            <div className="container">
+                            <div className="person-container">
                                 <h2>Sergio Alexander Parada Amarillo</h2>
                                 <p className="title">Programmer</p>
                                 <p>Front-end Designer & Programmer</p>

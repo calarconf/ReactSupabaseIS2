@@ -53,7 +53,7 @@
     display: flex;
     width: 80%;
     margin-left: 10%;
-    padding-bottom: 20rem;
+    padding-bottom: 3rem;
 
 
 
@@ -74,7 +74,7 @@
 
             height: 550px;
 
-            .container {
+            .person-container {
                 padding: 0 16px;
 
                 h2 {
