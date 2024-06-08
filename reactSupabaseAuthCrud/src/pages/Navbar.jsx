@@ -14,7 +14,7 @@ class Navbar extends Component {
     async componentDidMount() {
         // Verificar si el usuario está autenticado
         // const usuario = supabase.auth.getUser();
-        const { data: { session } } = await supabase.auth.getSession()
+        const { data: { session } } = await supabase.auth.getSession();
         if (session) {
             this.setState({ isAuthenticated: true });
         }else{
@@ -74,17 +74,7 @@ class Navbar extends Component {
                         )
                            
                     }
-                    {/* <Link to="/Login">
-                        <button>
-                            Iniciar Sesión
-                        </button>
-                    </Link> */}
-                    {/*
-                    <Link to="/">
-                        <button onClick={async()=> await supabase.auth.signOut()}>
-                            Logout
-                        </button>
-                    </Link> */}
+                    
                 </ul>
             </nav>
         );
