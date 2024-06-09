@@ -25,7 +25,7 @@ function TaskCard({ task }) {
             <div className='ms-auto'>
                 <button className='btn btn-danger btn-sm me-1' onClick={() => handleDelete()}>Delete</button>
                 <button className='btn btn-danger btn-sm me-1' onClick={() => handleToggleDone()}>Done</button>
-                <button className='btn btn-danger btn-sm me-1' onClick={() => handleEdit()}>Edit</button>
+                {/* <button className='btn btn-danger btn-sm me-1' onClick={() => handleEdit()}>Edit</button> */}
             </div>
         </div>
     )
