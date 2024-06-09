@@ -12,8 +12,9 @@ import CompostRequest from './components/Routes/CompostRequest';
 
 
 import NotFound from './pages/NotFound'
-import { supabase } from './supabase/client'
-
+// import { supabase } from './supabase/client'
+// import ProtectedRoutes from './components/ProtectedRoutes'
+import ProtectedRoute from './components/ProtectedRoute'
 import TermsAndConditions from './pages/TermsAndConditions';
 import Footer from './pages/footer';
 
@@ -43,16 +44,21 @@ function App() {
             <Route path="/compost-request" element={<CompostRequest />} />
 
             {/* paths a diferentes tabs de profile en Cuenta */}
-            <Route path="/active-collects" element={<Cuenta />} />
-            <Route path="/collect-record" element={<Cuenta />} />
-            <Route path="/follow-up" element={<Cuenta />} />
-            <Route path="/profile" element={<Cuenta />} />
+            <Route element={<ProtectedRoute/>}>
+              <Route path="/profile" element={<Cuenta />} />
+              <Route path="/active-collects" element={<Cuenta />} />
+              <Route path="/collect-record" element={<Cuenta />} />
+              <Route path="/follow-up" element={<Cuenta />} />
+              
+              <Route path="/profile/user-profile" element={<Cuenta />} />
+              <Route path="/profile/user-profile-settings" element={<Cuenta />} />
+              <Route path="/profile/user-profile-security" element={<Cuenta />} />
+              <Route path="/profile/user-billing" element={<Cuenta />} />
+
+            </Route>
 
             {/* paths a diferentes tabs de profile en Cuenta */}
-            <Route path="/profile/user-profile" element={<Cuenta />} />
-            <Route path="/profile/user-profile-settings" element={<Cuenta />} />
-            <Route path="/profile/user-profile-security" element={<Cuenta />} />
-            <Route path="/profile/user-billing" element={<Cuenta />} />
+            
 
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path='/login' element={<Login />} />
