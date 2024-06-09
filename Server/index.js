@@ -34,9 +34,9 @@ app.post('/create_preference', async (req, res) => {
                 },
             ],
             back_urls: {
-                success: 'https://www.youtube.com/@cristhianalarcon5721',
-                failure: 'https://www.youtube.com/@cristhianalarcon5721',
-                pending: 'https://www.youtube.com/@cristhianalarcon5721',
+                success: 'https://reactsupabaseis2-1.onrender.com',
+                failure: 'https://reactsupabaseis2-1.onrender.com',
+                pending: 'https://reactsupabaseis2-1.onrender.com',
             },
             auto_return: 'approved',
         };
