@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { GoogleMap, LoadScript, Autocomplete, Marker } from '@react-google-maps/api';
 import styles from './TaskForm.module.css'; // Importa el CSS modular
 
-initMercadoPago('TEST-e8ce1bfa-9a01-4a62-b930-d2266a99ea11', {
+initMercadoPago('APP_USR-a6036e51-cadc-4f55-8d5b-ed7cd5d54a6a', {
     locale: 'es-CO',
 });
 
@@ -45,7 +45,7 @@ function TaskForm() {
             const idempotencyKey = uuidv4();
             console.log(idempotencyKey);
 
-            const response = await axios.post("http://localhost:3000/create_preference", {
+            const response = await axios.post("https://compostify.onrender.com/create_preference", {
                 title: "Recolecta",
                 quantity: 1,
                 price: price, 
