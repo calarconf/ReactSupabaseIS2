@@ -54,9 +54,10 @@ function Login() {
 
                   <label className="terms-Link" htmlFor="acceptTerms">
                     <p1>Acepto los </p1>
-                    <Link to="/terms" onClick={() => setTermsAccepted(true)}>
+                    <Link to="https://seen-ear-f66.notion.site/T-rminos-y-Condiciones-y-Pol-tica-de-Privacidad-en-Compostify-1a8e73ab3b3545b08cab611e81c5b8d2" onClick={() => setTermsAccepted(true)}>
                       términos y condiciones
                     </Link>
+                    
                   </label>
                   <input
                     type="checkbox"
