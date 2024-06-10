@@ -13,7 +13,7 @@ export const MenuItems = [
     },
     {
         title: "Iniciar Sesión",
-        url: "/LoginForm",
+        url: "/Login",
         cName: "nav-links-mobile"
     }
 ];
