@@ -1,7 +1,7 @@
 import React from "react";
 import "./footerStyles.css";
 import { Link } from "react-router-dom";
-import logo from "../components/img/Log.png";
+import logo from "../components/img/LogoReuco.png";
 
 const Footer = () => {
     return (
@@ -12,8 +12,8 @@ const Footer = () => {
                     <div>
                         <img src={logo} alt="Logo" />
                         <div>
-                            <h1>Compostify</h1>
-                            <p>Juntos hacia una tierra más fértil.</p>
+                            <h1>Reuco</h1>
+                            <p>Re usa hoy lo que puede ser valioso mañana.</p>
                         </div>
                     </div>
                 </div>
@@ -35,10 +35,10 @@ const Footer = () => {
                         <div>
                             <h1>Nuestras Redes: </h1>
                             <div className="social-links">
-                                <Link to="https://www.instagram.com/compostify_col/" target="_blank" rel="noopener noreferrer">
+                                <Link to="https://www.instagram.com/reuco/" target="_blank" rel="noopener noreferrer">
                                     <i className="fa-brands fa-square-instagram"></i>
                                 </Link>
-                                <Link to="https://www.facebook.com/profile.php?id=61560271725752" target="_blank" rel="noopener noreferrer">
+                                <Link to="https://www.facebook.com/profile.php?id=61558433037264" target="_blank" rel="noopener noreferrer">
                                     <i class="fa-brands fa-square-facebook"></i>
                                 </Link>
                             </div>

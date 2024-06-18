@@ -1,6 +1,6 @@
 import React from 'react';
 import './TermsAndConditions.css';
-import logo from "../components/img/Log.png";
+import logo from "../components/img/LogoReuco.png";
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -42,7 +42,7 @@ function TermsAndConditions() {
                     <Link className="nav-link-logo" to="/">
                         <div className="logoContainer">
                             <img src={logo} alt="Logo" />
-                            <h1 className="navbar-logo" >Compostify</h1>
+                            <h1 className="navbar-logo" >Reuco</h1>
                         </div>
                     </Link>
                 </nav>

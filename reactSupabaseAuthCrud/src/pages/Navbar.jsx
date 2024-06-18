@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "./NavbarStyles.css";
 import { MenuItems } from "./MenuItems";
-import logo from "../components/img/Log.png";
+import logo from "../components/img/LogoReuco.png";
 import { Link } from 'react-router-dom';
 import { supabase } from "../supabase/client";
 // const usuario = await supabase.auth.getUser();
@@ -38,7 +38,7 @@ class Navbar extends Component {
                 <Link className="nav-link-logo" to="/">
                     <div className="logoContainer">
                         <img src={logo} alt="Logo" />
-                        <h1 className="navbar-logo" >Compostify</h1>
+                        <h1 className="navbar-logo" >Reuco</h1>
                     </div>
                 </Link>
                 <div className="menu-icons" onClick=

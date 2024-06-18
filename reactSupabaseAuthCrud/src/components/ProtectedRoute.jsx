@@ -17,7 +17,7 @@ const ProtectedRoute = ({ children }) => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>; // Puedes reemplazar esto con un spinner u otra indicación de carga
+    return <div>Loading...</div>; 
   }
 
   if (!isAuthenticated) {

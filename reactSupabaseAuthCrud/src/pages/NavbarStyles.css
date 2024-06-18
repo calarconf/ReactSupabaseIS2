@@ -13,7 +13,8 @@
 }
 
 .logoContainer img {
-    width: 60px;
+    width: 45px; 
+    /* Antes 60px */
 }
 
 .NavbarItems {

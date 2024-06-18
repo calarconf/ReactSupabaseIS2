@@ -42,7 +42,7 @@ function Cuenta() {
                                 <div className="user-links">
                                     <div className='item title'>
                                         <span className="user-nickname placeholder-nickname">
-                                            Compostify-User
+                                            Re-User
                                         </span>
                                     </div>
                                 </div>
@@ -238,7 +238,7 @@ function Cuenta() {
                                                 <h1>2. ¿Ofrecen planes de suscripción?</h1>
                                             </div>
                                             <div className="tab-content-ans">
-                                                <p1>Actualmente no, sin embargo se enceuntra dentro de los planes a futuro de Compostify.</p1>
+                                                <p1>Actualmente no, sin embargo se enceuntra dentro de los planes a futuro de Reuco.</p1>
                                             </div>
                                         </div>
                                         <div className="tab-content-point">

@@ -6,7 +6,7 @@ import "./LoginStyles.css";
 import HeroImg from "../components/img/assets/2.jpg";
 
 import { Link } from 'react-router-dom';
-import logo from "../components/img/Log.png";
+import logo from "../components/img/LogoReuco.png";
 import Hero from './Hero';
 
 function Login() {
@@ -27,7 +27,7 @@ function Login() {
           <Link className="nav-link-logo" to="/">
             <div className="logoContainer">
               <img src={logo} alt="Logo" />
-              <h1 className="navbar-logo" >Compostify</h1>
+              <h1 className="navbar-logo" >Reuco</h1>
             </div>
           </Link>
         </nav>
@@ -39,7 +39,7 @@ function Login() {
         <div className="wrapper">
           <div className="row pt-5" style={{ zIndex: 1 }}>
             <div className="col-md-4 offset-md-4">
-              <h3>Dale una segunda vida a tus residuos con Compostify.</h3>
+              <h3>Dale una segunda vida a tus residuos con Reuco.</h3>
               <form onSubmit={handleSubmit} className="card card-body">
                 <input
                   type="email"

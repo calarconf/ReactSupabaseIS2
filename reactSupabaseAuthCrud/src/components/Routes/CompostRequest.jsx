@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import logo from "../img/Log.png";
+import logo from "../img/LogoReuco.png";
 import "./CompostRequestStyle.css";
 import Navbar from "../../pages/Navbar";
 

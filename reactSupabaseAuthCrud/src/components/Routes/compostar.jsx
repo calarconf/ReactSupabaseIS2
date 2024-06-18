@@ -21,7 +21,7 @@ function Compostar() {
             />
             <div className="container">
                 <div className="who-compost">
-                    <h1>¿Qué es Compostify?</h1>
+                    <h1>¿Qué es Reuco?</h1>
                     <p1>Conectamos familias y empresas que buscan disminuir su
                         huella de carbono con transformadores de composta.</p1>
                     <p1>Facilitamos la recolección de residios orgánicos a

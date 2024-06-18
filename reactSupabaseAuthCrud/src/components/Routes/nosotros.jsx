@@ -17,7 +17,7 @@ function Nosotros() {
                 cName="hero"
                 heroImg={nosotrosImg}
                 title="Nosotros"
-                paragraph="Conoce al equipo de Compostify"
+                paragraph="Conoce al equipo de Reuco"
             />
             <div className="full-container">
                 <h2 className='catchphrase'>"Juntos hacia una Tierra mas fertil"</h2>
