@@ -35,10 +35,14 @@ function TaskForm() {
 
     useEffect(() => {
         const calculatedPrice = (organicWasteAmount / 10) * 27500;
-        setPrice(calculatedPrice);
+        const formattedPrice = parseFloat(calculatedPrice.toFixed(2)).toLocaleString('es-CO', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
+        setPrice(formattedPrice);
         setPreferenceId(null);
     }, [organicWasteAmount]);
-
+    
     
     const createPreference = async (price) => {
         try {
@@ -92,10 +96,10 @@ function TaskForm() {
         if (!taskName) {
             errors.taskName = 'La descripción no puede estar vacía';
         }
-        if (organicWasteAmount <= 0) {
-            errors.organicWasteAmount = 'La cantidad debe ser mayor a 0';
-        } else if (organicWasteAmount > 40) {
-            errors.organicWasteAmount = 'La cantidad debe ser menor o igual a 40';
+        if (organicWasteAmount <= 2) {
+            errors.organicWasteAmount = 'La cantidad debe ser mayor a 3kg';
+        } else if (organicWasteAmount > 30) {
+            errors.organicWasteAmount = 'La cantidad debe ser menor o igual a 30Kg';
         }
         return errors;
     };
@@ -130,7 +134,7 @@ function TaskForm() {
         setMarkerPosition({ lat, lng });
 
         const geocodeResponse = await axios.get(
-            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyCqB_5LmUTQ6f9fOd-nGPZlxEXAp9PQezw`
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAQj03uZc_sWxZuvoBrzDhoR_xQpxCVkuo`
         );
         if (geocodeResponse.data.results.length > 0) {
             const formattedAddress = geocodeResponse.data.results[0].formatted_address;
@@ -141,15 +145,12 @@ function TaskForm() {
 
     return (
         <form onSubmit={(e) => e.preventDefault()} className={styles.card}>
-            <input
-                type="text"
-                name="taskName"
-                placeholder="Dirección"
-                onChange={(e) => setTaskName(e.target.value)}
-                value={taskName}
-                className={styles['form-control']} 
-            />
+            {/* cambiar de input a label */}
+            <label className={styles['form-control-label']}>
+                Dirección: {taskName ? taskName : "Selecciona una dirección"}
+            </label>
             {errors.taskName && <p className={styles.error}>{errors.taskName}</p>}
+            {/* poner lim */}
             <input
                 type="number"
                 name="organicWasteAmount"
@@ -161,7 +162,7 @@ function TaskForm() {
             {errors.organicWasteAmount && <p className={styles.error}>{errors.organicWasteAmount}</p>}
             <p className={styles.price}>Precio: {price} COP</p>
             <LoadScript
-                googleMapsApiKey="AIzaSyCqB_5LmUTQ6f9fOd-nGPZlxEXAp9PQezw"
+                googleMapsApiKey="AIzaSyAQj03uZc_sWxZuvoBrzDhoR_xQpxCVkuo"
                 libraries={libraries}
             >
                 <Autocomplete
