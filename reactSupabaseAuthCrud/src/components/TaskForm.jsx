@@ -35,10 +35,16 @@ function TaskForm() {
 
     useEffect(() => {
         const calculatedPrice = (organicWasteAmount / 10) * 27500;
-        setPrice(calculatedPrice);
+    
+        // // Formateamos el precio solo para la visualización, sin necesidad de parseFloat
+        // const formattedPrice = calculatedPrice.toLocaleString('es-CO', {
+        //     minimumFractionDigits: 2,
+        //     maximumFractionDigits: 2,
+        // });
+    
+        setPrice(calculatedPrice);  
         setPreferenceId(null);
     }, [organicWasteAmount]);
-
     
     const createPreference = async (price) => {
         try {
@@ -81,7 +87,7 @@ function TaskForm() {
                 setErrors({});
                 setPreferenceId(null);
                 alert('Recolecta creada con éxito');
-            }, 7000);
+            }, 9000);
         }
     };
     
@@ -90,12 +96,12 @@ function TaskForm() {
     const validate = () => {
         const errors = {};
         if (!taskName) {
-            errors.taskName = 'La descripción no puede estar vacía';
+            errors.taskName = 'La dirección no puede estar vacía';
         }
-        if (organicWasteAmount <= 0) {
-            errors.organicWasteAmount = 'La cantidad debe ser mayor a 0';
-        } else if (organicWasteAmount > 40) {
-            errors.organicWasteAmount = 'La cantidad debe ser menor o igual a 40';
+        if (organicWasteAmount <= 2) {
+            errors.organicWasteAmount = 'La cantidad debe ser mayor a 3kg';
+        } else if (organicWasteAmount > 30) {
+            errors.organicWasteAmount = 'La cantidad debe ser menor o igual a 30Kg';
         }
         return errors;
     };
@@ -130,7 +136,7 @@ function TaskForm() {
         setMarkerPosition({ lat, lng });
 
         const geocodeResponse = await axios.get(
-            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyCqB_5LmUTQ6f9fOd-nGPZlxEXAp9PQezw`
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAQj03uZc_sWxZuvoBrzDhoR_xQpxCVkuo`
         );
         if (geocodeResponse.data.results.length > 0) {
             const formattedAddress = geocodeResponse.data.results[0].formatted_address;
@@ -161,7 +167,7 @@ function TaskForm() {
             {errors.organicWasteAmount && <p className={styles.error}>{errors.organicWasteAmount}</p>}
             <p className={styles.price}>Precio: {price} COP</p>
             <LoadScript
-                googleMapsApiKey="AIzaSyCqB_5LmUTQ6f9fOd-nGPZlxEXAp9PQezw"
+                googleMapsApiKey="AIzaSyAQj03uZc_sWxZuvoBrzDhoR_xQpxCVkuo"
                 libraries={libraries}
             >
                 <Autocomplete
