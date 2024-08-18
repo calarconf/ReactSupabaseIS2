@@ -1,10 +1,12 @@
 .footer {
-    position: absolute;
-    padding: 1rem 6rem;
+    position: static;
+    padding: 1.5rem 2rem;
     background: black;
     color: white;
     font-size: 0.8rem;
     width: 100%;
+    display: flex;
+    flex: 1;
 }
 
 .top {
@@ -12,7 +14,8 @@
     text-align: start;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 0rem 0.5rem;
+    flex: 1;
 }
 
 .top>div {
@@ -39,16 +42,23 @@
     text-align: start;
     justify-content: space-between;
     flex-wrap: wrap;
+    flex: 1;
 }
 
 .bottom h1 {
     margin-bottom: 15px;
 }
 
+.resp-footer1 {
+    display: flex;
+    flex: 1;
+}
+
 .proyect-settings {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 0rem 1rem 1rem 1rem;
 }
 
 .footer-columns {
@@ -63,9 +73,7 @@
     display: flex;
     gap: 20px;
     justify-content: flex-end;
-    /* Added this line */
     width: 100%;
-    /* Added this line */
 }
 
 .bottom i {
@@ -101,4 +109,44 @@
 
 .mails a:hover {
     color: #25685D;
+}
+
+@media screen and (max-width: 700px) {
+    .footer {
+        width: 100%;
+        padding: 0.8rem;
+
+    }
+
+
+    .proyect-settings {
+        align-items: flex-end;
+
+        .footer-columns {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+        }
+    }
+
+    .resp-footer1 {
+        display: flex;
+        width: 100%;
+        flex: 1;
+    }
+
+    .our-socials .footer-columns {
+        align-items: flex-start;
+
+        .social-links {
+            justify-content: flex-start;
+        }
+
+        div .mails {
+            align-items: flex-start;
+        }
+    }
+
 }

@@ -8,28 +8,34 @@ const Footer = () => {
         <div className="footer">
 
             <div className="bottom">
-                <div className="top">
-                    <div>
-                        <img src={logo} alt="Logo" />
+                <div className="resp-footer1">
+                    <div className="top">
                         <div>
-                            <h1>Compostify</h1>
-                            <p>Juntos hacia una tierra más fértil.</p>
+                            <Link className="nav-link-logo" to="/">
+                                <div className="logoContainer">
+                                    <img src={logo} alt="Logo" />
+                                </div>
+                            </Link>
+                            <div>
+                                <h1>Compostify</h1>
+                                <p>Juntos hacia una tierra más fértil.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="proyect-settings">
+                        <div className="footer-columns">
+                            <div>
+                                <h1>GitHub: </h1>
+                                <div className="social-links">
+                                    <Link to="https://github.com/calarconf/ReactSupabaseIS2/tree/main" target="_blank" rel="noopener noreferrer">
+                                        <i className="fa-brands fa-square-github"></i>
+                                    </Link>
+                                </div></div>
+
                         </div>
                     </div>
                 </div>
-                <div></div>
-                <div className="proyect-settings">
-                    <div className="footer-columns">
-                        <div>
-                            <h1>GitHub: </h1>
-                            <div className="social-links">
-                                <Link to="https://github.com/calarconf/ReactSupabaseIS2/tree/main" target="_blank" rel="noopener noreferrer">
-                                    <i className="fa-brands fa-square-github"></i>
-                                </Link>
-                            </div></div>
 
-                    </div>
-                </div>
                 <div className="our-socials">
                     <div className="footer-columns">
                         <div>

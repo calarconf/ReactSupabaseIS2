@@ -2,7 +2,9 @@
   font-family: sans-serif;
   text-align: center;
   min-height: 100vh;
-
+  display: grid;
+  position: relative;
+  box-sizing: content-box;
 }
 
 body {
@@ -66,4 +68,8 @@ button {
 .checkbox {
   position: relative;
   font-size: 20px;
+}
+
+.footer-container {
+  display: flex;
 }

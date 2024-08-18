@@ -65,6 +65,9 @@ function App() {
             <Route path='*' element={<NotFound />} />
           </Routes>
         </TaskContextProvider>
+      </div>
+      <div className="footer-container">
+
         <Footer />
       </div>
 

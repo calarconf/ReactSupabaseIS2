@@ -11,12 +11,12 @@ initMercadoPago('APP_USR-a6036e51-cadc-4f55-8d5b-ed7cd5d54a6a', {
 });
 
 const containerStyle = {
-  width: '100%',
-  height: '400px'
+    width: '100%',
+    height: '400px'
 };
 
 const center = {
-    lat: 4.7124857902526855, 
+    lat: 4.7124857902526855,
     lng: -74.0717468261718
 };
 
@@ -25,7 +25,7 @@ const libraries = ['places'];
 function TaskForm() {
     const [taskName, setTaskName] = useState('');
     const [organicWasteAmount, setOrganicWasteAmount] = useState("");
-    const [price, setPrice] = useState(0); 
+    const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState({});
     const { createTask, adding } = useTasks();
     const [preferenceId, setPreferenceId] = useState(null);
@@ -39,7 +39,7 @@ function TaskForm() {
         setPreferenceId(null);
     }, [organicWasteAmount]);
 
-    
+
     const createPreference = async (price) => {
         try {
             const idempotencyKey = uuidv4();
@@ -48,7 +48,7 @@ function TaskForm() {
             const response = await axios.post("https://compostify.onrender.com/create_preference", {
                 title: "Recolecta",
                 quantity: 1,
-                price: price, 
+                price: price,
             }, {
                 headers: {
                     'X-Idempotency-Key': idempotencyKey,
@@ -69,7 +69,7 @@ function TaskForm() {
             setErrors(validationErrors);
             return;
         }
-        
+
         const id = await createPreference(price);
         if (id) {
             setPreferenceId(id);
@@ -84,8 +84,8 @@ function TaskForm() {
             }, 7000);
         }
     };
-    
-    
+
+
 
     const validate = () => {
         const errors = {};
@@ -117,7 +117,7 @@ function TaskForm() {
             const location = place.geometry.location;
             setMarkerPosition({ lat: location.lat(), lng: location.lng() });
             setAddress(place.formatted_address);
-            setTaskName(place.formatted_address); 
+            setTaskName(place.formatted_address);
             console.log(place.formatted_address);
         } else {
             console.log('Autocomplete is not loaded yet!');
@@ -147,7 +147,7 @@ function TaskForm() {
                 placeholder="Dirección"
                 onChange={(e) => setTaskName(e.target.value)}
                 value={taskName}
-                className={styles['form-control']} 
+                className={styles['form-control']}
             />
             {errors.taskName && <p className={styles.error}>{errors.taskName}</p>}
             <input
@@ -156,7 +156,7 @@ function TaskForm() {
                 placeholder="Cantidad de desechos orgánicos"
                 onChange={(e) => setOrganicWasteAmount(parseInt(e.target.value))}
                 value={organicWasteAmount}
-                className={styles['form-control']} 
+                className={styles['form-control']}
             />
             {errors.organicWasteAmount && <p className={styles.error}>{errors.organicWasteAmount}</p>}
             <p className={styles.price}>Precio: {price} COP</p>

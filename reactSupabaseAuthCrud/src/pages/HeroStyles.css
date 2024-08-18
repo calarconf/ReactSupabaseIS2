@@ -51,3 +51,17 @@
     background: #a75644;
     color: white;
 }
+
+@media screen and (max-width: 1300px) {
+    .hero {
+        display: flex;
+    }
+
+    .Hero-Image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.45;
+        mask-image: linear-gradient(#05161A 70%, transparent);
+    }
+}

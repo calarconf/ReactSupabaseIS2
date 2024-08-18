@@ -1,6 +1,7 @@
 import compostarImg from '../img/assets/1.jpg';
 import png1 from '../img/assets/png1.png';
 import png2 from '../img/assets/png2.png';
+import leaves from "../img/assets/leaves.png";
 import Navbar from "../../pages/Navbar";
 import Hero from '../../pages/Hero';
 import './compostarStyles.css';
@@ -8,7 +9,6 @@ import './compostarStyles.css';
 function Compostar() {
     return (
         <>
-
             <Navbar />
             <Hero
                 cName="hero"
@@ -27,9 +27,7 @@ function Compostar() {
                     <p1>Facilitamos la recolección de residios orgánicos a
                         través de nuestra plataforma digital. Únete a
                         nuestra comunidad comprometida con el cambio ambiental
-                        y comienza a transformar tus residuos en recursos hoy mismo.</p1>
-
-                </div>
+                        y comienza a transformar tus residuos en recursos hoy mismo.</p1></div>
                 <div className='what-compost'>
                     <img className="image-content" alt="png1" src={png1} />
                     <div className="content">
@@ -40,8 +38,11 @@ function Compostar() {
                             el medio ambiente.
                         </p1>
                     </div>
+                    <img src={leaves} alt="leaves" className="res-image" />
                 </div>
+
                 <div className="why-compost">
+                    <img src={leaves} alt="leaves" className="res-image" />
                     <div className="content">
                         <h1>¿Por qué recoger residuos orgánicos?</h1>
                         <p1>Compostar en Colombia es genial: reduce la basura, mejora el aire y fortalece los cultivos.
