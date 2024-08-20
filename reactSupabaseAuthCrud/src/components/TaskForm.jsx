@@ -92,7 +92,7 @@ function TaskForm() {
         if (!taskName) {
             errors.taskName = 'La dirección no puede estar vacía';;
         }
-        if (organicWasteAmount <= 2) {
+        if (organicWasteAmount <= 1) {
             errors.organicWasteAmount = 'La cantidad debe ser mayor a 3kg';
         } else if (organicWasteAmount > 30) {
             errors.organicWasteAmount = 'La cantidad debe ser menor o igual a 30Kg';
