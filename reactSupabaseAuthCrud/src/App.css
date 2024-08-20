@@ -5,12 +5,15 @@
   display: grid;
   position: relative;
   box-sizing: content-box;
+
+
 }
 
 body {
   background: #05161A;
   font-family: barlow, arial, sans-serif;
   font-weight: 400;
+  height: 100%;
 }
 
 .pageContainer {
@@ -68,8 +71,4 @@ button {
 .checkbox {
   position: relative;
   font-size: 20px;
-}
-
-.footer-container {
-  display: flex;
 }

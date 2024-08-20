@@ -2,6 +2,7 @@ import Navbar from "../../pages/Navbar";
 import Hero from '../../pages/Hero';
 import nosotrosImg from "../img/assets/9.jpg";
 import visionImg from "../img/assets/4.jpg";
+import visionIm from "../img/assets/3.jpg";
 import sergio from "../img/assets/sergio.jpg";
 import christian from "../img/assets/christian.jpg";
 import fabio from "../img/assets/fabio.jpg";
@@ -33,6 +34,7 @@ function Nosotros() {
                             gestionando la recolección de residuos a través de una plataforma digital.</p>
                     </div>
                     <img className="image" alt="VisionImg" src={visionImg} />
+                    <img className="imageRes" alt="VisionIm" src={visionIm} />
                 </div>
                 <div className="separator"></div>
                 <h2 className='Ustitle'>Nuestro equipo</h2>

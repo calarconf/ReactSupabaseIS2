@@ -3,6 +3,7 @@
 }
 
 .catchphrase {
+    padding: 0.5rem;
     text-align: center;
     font-style: oblique;
     color: #a75644;
@@ -12,7 +13,6 @@
 .textContent {
     width: 60%;
     padding-left: 5%;
-
 }
 
 .title {
@@ -23,13 +23,19 @@
     padding: 0.5rem 0 2rem 0;
 }
 
+
 .image {
+    align-self: center;
     display: block;
     width: 45%;
-    height: 45%;
+    height: 100%;
     object-fit: cover;
     opacity: 0.45;
     mask-image: linear-gradient(to left, #05161A 50%, transparent 100%);
+}
+
+.imageRes {
+    display: none;
 }
 
 .text {
@@ -51,8 +57,8 @@
 
 .Uscontent {
     display: flex;
-    width: 80%;
-    margin-left: 10%;
+    width: 90%;
+    margin: auto;
     padding-bottom: 3rem;
 
 
@@ -71,11 +77,12 @@
             background-color: #25685D;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             margin: 8px;
-
-            height: 550px;
+            height: auto;
+            min-width: auto;
+            min-height: 500px;
 
             .person-container {
-                padding: 0 16px;
+                padding: 1rem 0.5rem;
 
                 h2 {
                     font-size: 1.5rem;
@@ -102,11 +109,43 @@
 
 
 .full-container {
-    min-height: 110vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 1.3rem;
 }
 
 @media screen and (max-width: 1000px) {
     .Uscontent {
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+
+        .column {
+            float: left;
+            width: 80%;
+            margin-bottom: 16px;
+        }
+    }
+
+    .textContent {
+        flex: 1;
+        padding-left: 5%;
+        position: relative;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .imageRes {
+        align-self: center;
         display: block;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.45;
+        mask-image: linear-gradient(to left, #05161A 50%, transparent 100%);
+        flex: 0;
+        width: 20%;
     }
 }

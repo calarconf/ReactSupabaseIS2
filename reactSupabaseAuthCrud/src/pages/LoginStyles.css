@@ -1,9 +1,13 @@
+.container .hero {
+  height: 100vh;
+}
+
 .wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 60%;
   padding: 2rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
@@ -13,20 +17,23 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.term-button-container {
+  display: flex;
+}
+
 .terms-container {
 
   display: flex;
   margin-top: 20px;
   max-width: 70%;
   padding: 2rem;
-  text-align: center;
-  margin: auto;
+  text-align: start;
   gap: 30px;
+  flex: 1;
 
 }
 
 .terms-Link {
-  flex: 1;
   align-self: center;
 
   p1 {
@@ -43,7 +50,11 @@
 }
 
 .button-submit {
-  width: 30%;
+  justify-content: center;
+  /* center horizontally */
+  align-self: center;
+  /* center vertically */
+  width: fit-content;
   text-decoration: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -51,7 +62,7 @@
 
 input[type="password"],
 input[type="email"] {
-  width: 60%;
+  width: 80%;
   padding: 0.8rem;
   margin-top: 5px;
   margin-bottom: 20px;
@@ -85,4 +96,26 @@ h3 {
 
 .terms-details ul li {
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1300px) {
+  .card button {
+    display: block;
+  }
+
+  .wrapper {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .term-button-container {
+    flex-direction: column;
+  }
+
+  .terms-container {
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 }

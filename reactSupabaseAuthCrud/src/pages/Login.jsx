@@ -49,29 +49,31 @@ function Login() {
                   className="form-control mb-2"
                   required
                 />
+                <div className="term-button-container">
+                  <div className="terms-container mb-3">
 
-                <div className="terms-container mb-3">
+                    <label className="terms-Link" htmlFor="acceptTerms">
+                      <p1>Acepto los </p1>
+                      <Link to="https://seen-ear-f66.notion.site/T-rminos-y-Condiciones-y-Pol-tica-de-Privacidad-en-Compostify-1a8e73ab3b3545b08cab611e81c5b8d2" target="_blank" rel="noopener noreferrer" onClick={() => setTermsAccepted(true)}>
+                        términos y condiciones
+                      </Link>
 
-                  <label className="terms-Link" htmlFor="acceptTerms">
-                    <p1>Acepto los </p1>
-                    <Link to="https://seen-ear-f66.notion.site/T-rminos-y-Condiciones-y-Pol-tica-de-Privacidad-en-Compostify-1a8e73ab3b3545b08cab611e81c5b8d2" target="_blank" rel="noopener noreferrer" onClick={() => setTermsAccepted(true)}>
-                      términos y condiciones
-                    </Link>
-                    
-                  </label>
-                  <input
-                    type="checkbox"
-                    id="acceptTerms"
-                    name="terms"
-                    checked={termsAccepted}
-                    onChange={handleCheckboxChange}
-                  />
-                  {error && <div className="error">{error}</div>}
+                    </label>
+                    <input
+                      type="checkbox"
+                      id="acceptTerms"
+                      name="terms"
+                      checked={termsAccepted}
+                      onChange={handleCheckboxChange}
+                    />
+                    {error && <div className="error">{error}</div>}
+                  </div>
+
+                  <button className="btn btn-primary button-submit" type="submit">
+                    Empezar a recolectar
+                  </button>
                 </div>
 
-                <button className="btn btn-primary button-submit" type="submit">
-                  Empezar a recolectar
-                </button>
               </form>
             </div>
           </div>
