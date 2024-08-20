@@ -27,11 +27,49 @@ function TaskForm() {
     const [organicWasteAmount, setOrganicWasteAmount] = useState("");
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState({});
-    const { createTask, adding } = useTasks();
+    const {createTask, adding } = useTasks();
+    const [, setAdding] = useState(false); // Eliminé setAdding, ya que no se necesita si `adding` viene de useTasks()
+
     const [preferenceId, setPreferenceId] = useState(null);
     const [address, setAddress] = useState('');
-    const [autocomplete, setAutocomplete] = useState(null);
+    const [autocomplete, setAutocomplete] = useState(null); 
     const [markerPosition, setMarkerPosition] = useState(center);
+    const [showSimularPago, setShowSimularPago] = useState(false);
+  
+    const handleClick = async () => {
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+    
+        const id = await createPreference(price); 
+        if (id) {
+            setPreferenceId(id); 
+            setShowSimularPago(true); 
+        }
+    };
+    
+    const resetForm = () => {
+        setTaskName('');
+        setOrganicWasteAmount("");
+        setPrice(0);
+        setAddress('');
+        setErrors({});
+        setMarkerPosition(center); 
+        setPreferenceId(null);
+        setShowSimularPago(false); 
+    };
+    
+    const handleSimularPagoClick = async () => {
+        const id = await createPreference(price);
+        if (id) {
+            setPreferenceId(id);
+            await createTask(taskName, organicWasteAmount, price);
+            alert('Simulación de pago realizada con éxito');
+            resetForm(); 
+        }
+    };
 
     useEffect(() => {
         const calculatedPrice = (organicWasteAmount / 10) * 27500;
@@ -62,30 +100,6 @@ function TaskForm() {
             alert("Hubo un error al crear la preferencia de pago. Por favor, inténtalo de nuevo.");
         }
     };
-
-    const handleClick = async () => {
-        const validationErrors = validate();
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            return;
-        }
-
-        const id = await createPreference(price);
-        if (id) {
-            setPreferenceId(id);
-            // Simula un retraso de 3 segundos antes de llamar a createTask
-            setTimeout(async () => {
-                await createTask(taskName, organicWasteAmount, price);
-                setTaskName('');
-                setOrganicWasteAmount(0);
-                setErrors({});
-                setPreferenceId(null);
-                alert('Recolecta creada con éxito');
-            }, 7000);
-        }
-    };
-
-
 
     const validate = () => {
         const errors = {};
@@ -200,6 +214,12 @@ function TaskForm() {
             <button onClick={handleClick} disabled={adding} className={styles.btn}>
                 {adding ? 'Solicitando...' : 'Solicitar'}
             </button>
+            {showSimularPago && (
+                <button onClick={handleSimularPagoClick} className={styles.btn}>
+                    Simular pago
+                </button>
+                
+            )}
             {preferenceId && (
                 <Wallet
                     initialization={{ preferenceId: preferenceId, redirectMode: 'blank' }}
