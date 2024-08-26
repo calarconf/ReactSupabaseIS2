@@ -19,9 +19,27 @@ const Footer = () => {
                             <div>
                                 <h1>Compostify</h1>
                                 <p>Juntos hacia una tierra más fértil.</p>
+                                
                             </div>
+
                         </div>
+                        <div className="User-Manual" >
+                            <p1>
+                                <Link to="https://seen-ear-f66.notion.site/Manual-de-usuario-Compostify-13ee1dfa63fe406b877961e63e50c8dd?pvs=4" target="_blank" rel="noopener noreferrer" onClick={() => setTermsAccepted(true)}>
+                                Manual de usuario
+                                </Link>
+                            </p1>
+                        </div>
+                        <div className="User-Manual" >
+                            <p1>
+                                <Link to="https://seen-ear-f66.notion.site/Manual-t-cnico-Compostify-a845c8fe673b4ecca1cbdbce83ef30c4?pvs=4" target="_blank" rel="noopener noreferrer" onClick={() => setTermsAccepted(true)}>
+                                Manual Técnico
+                                </Link>
+                            </p1>
+                        </div>
+                        
                     </div>
+                    
                     <div className="proyect-settings">
                         <div className="footer-columns">
                             <div>
