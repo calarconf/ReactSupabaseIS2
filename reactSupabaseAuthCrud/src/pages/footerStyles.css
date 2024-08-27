@@ -3,7 +3,7 @@
     padding: 1.5rem 2rem;
     background: black;
     color: white;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     width: 100%;
     display: flex;
     height: auto;
@@ -111,6 +111,19 @@
     color: #25685D;
 }
 
+.User-Manual {
+    padding: 1.5rem;
+    a{
+        text-decoration: none;
+        width: 100%;
+        color: white;
+
+    }
+}
+.User-Manual a:hover{
+    color: #25685D;
+
+}
 @media screen and (max-width: 700px) {
     .footer {
         width: 100%;

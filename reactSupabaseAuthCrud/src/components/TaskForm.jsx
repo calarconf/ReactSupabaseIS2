@@ -92,11 +92,49 @@ function TaskForm() {
     const [organicWasteAmount, setOrganicWasteAmount] = useState("");
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState({});
-    const { createTask, adding } = useTasks();
+    const {createTask, adding } = useTasks();
+    const [, setAdding] = useState(false); // Eliminé setAdding, ya que no se necesita si `adding` viene de useTasks()
+
     const [preferenceId, setPreferenceId] = useState(null);
     const [address, setAddress] = useState('');
-    const [autocomplete, setAutocomplete] = useState(null);
+    const [autocomplete, setAutocomplete] = useState(null); 
     const [markerPosition, setMarkerPosition] = useState(center);
+    const [showSimularPago, setShowSimularPago] = useState(false);
+  
+    const handleClick = async () => {
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+    
+        const id = await createPreference(price); 
+        if (id) {
+            setPreferenceId(id); 
+            setShowSimularPago(true); 
+        }
+    };
+    
+    const resetForm = () => {
+        setTaskName('');
+        setOrganicWasteAmount("");
+        setPrice(0);
+        setAddress('');
+        setErrors({});
+        setMarkerPosition(center); 
+        setPreferenceId(null);
+        setShowSimularPago(false); 
+    };
+    
+    const handleSimularPagoClick = async () => {
+        const id = await createPreference(price);
+        if (id) {
+            setPreferenceId(id);
+            await createTask(taskName, organicWasteAmount, price);
+            alert('Simulación de pago realizada con éxito');
+            resetForm(); 
+        }
+    };
 
     useEffect(() => {
         const calculatedPrice = (organicWasteAmount / 10) * 27500;
@@ -128,39 +166,15 @@ function TaskForm() {
         }
     };
 
-    const handleClick = async () => {
-        const validationErrors = validate();
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            return;
-        }
-
-        const id = await createPreference(price);
-        if (id) {
-            setPreferenceId(id);
-            // Simula un retraso de 3 segundos antes de llamar a createTask
-            setTimeout(async () => {
-                await createTask(taskName, organicWasteAmount, price);
-                setTaskName('');
-                setOrganicWasteAmount(0);
-                setErrors({});
-                setPreferenceId(null);
-                alert('Recolecta creada con éxito');
-            }, 7000);
-        }
-    };
-
-
-
     const validate = () => {
         const errors = {};
         if (!taskName) {
-            errors.taskName = 'La descripción no puede estar vacía';
+            errors.taskName = 'La dirección no puede estar vacía';;
         }
-        if (organicWasteAmount <= 0) {
-            errors.organicWasteAmount = 'La cantidad debe ser mayor a 0';
-        } else if (organicWasteAmount > 40) {
-            errors.organicWasteAmount = 'La cantidad debe ser menor o igual a 40';
+        if (organicWasteAmount <= 1) {
+            errors.organicWasteAmount = 'La cantidad debe ser mayor a 3kg';
+        } else if (organicWasteAmount > 30) {
+            errors.organicWasteAmount = 'La cantidad debe ser menor o igual a 30Kg';
         }
         return errors;
     };
@@ -195,7 +209,7 @@ function TaskForm() {
         setMarkerPosition({ lat, lng });
 
         const geocodeResponse = await axios.get(
-            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyCqB_5LmUTQ6f9fOd-nGPZlxEXAp9PQezw`
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAQj03uZc_sWxZuvoBrzDhoR_xQpxCVkuo`
         );
         if (geocodeResponse.data.results.length > 0) {
             const formattedAddress = geocodeResponse.data.results[0].formatted_address;
@@ -227,7 +241,7 @@ function TaskForm() {
             {errors.organicWasteAmount && <p className={styles.error}>{errors.organicWasteAmount}</p>}
             <p className={styles.price}>Precio: {price} COP</p>
             <LoadScript
-                googleMapsApiKey="AIzaSyCqB_5LmUTQ6f9fOd-nGPZlxEXAp9PQezw"
+                googleMapsApiKey="AIzaSyAQj03uZc_sWxZuvoBrzDhoR_xQpxCVkuo"
                 libraries={libraries}
             >
                 <Autocomplete
@@ -266,6 +280,12 @@ function TaskForm() {
             <button onClick={handleClick} disabled={adding} className={styles.btn}>
                 {adding ? 'Solicitando...' : 'Solicitar'}
             </button>
+            {showSimularPago && (
+                <button onClick={handleSimularPagoClick} className={styles.btn}>
+                    Simular pago
+                </button>
+                
+            )}
             {preferenceId && (
                 <Wallet
                     initialization={{ preferenceId: preferenceId, redirectMode: 'blank' }}

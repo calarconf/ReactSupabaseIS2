@@ -41,7 +41,7 @@ function App() {
             {/* <Route path="/" element={<Home />} /> */}
             <Route path="/" element={<Home />} />
             <Route path="/us" element={<Nosotros />} />
-            <Route path="/compost-request" element={<CompostRequest />} />
+            
 
             {/* paths a diferentes tabs de profile en Cuenta */}
             <Route element={<ProtectedRoute />}>
@@ -50,6 +50,8 @@ function App() {
               <Route path="/collect-record" element={<Cuenta />} />
               <Route path="/follow-up" element={<Cuenta />} />
 
+              <Route path="/compost-request" element={<CompostRequest />} />
+              
               <Route path="/profile/user-profile" element={<Cuenta />} />
               <Route path="/profile/user-profile-settings" element={<Cuenta />} />
               <Route path="/profile/user-profile-security" element={<Cuenta />} />

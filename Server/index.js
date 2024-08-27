@@ -34,11 +34,12 @@ app.post('/create_preference', async (req, res) => {
                 },
             ],
             back_urls: {
-                success: 'https://reactsupabaseis2-1.onrender.com',
-                failure: 'https://reactsupabaseis2-1.onrender.com',
+                success: 'https://reactsupabaseis2-1.onrender.com/collect-record',
+                failure: 'https://reactsupabaseis2-1.onrender.com/profile',
                 pending: 'https://reactsupabaseis2-1.onrender.com',
             },
             auto_return: 'approved',
+            notification_url: 'https://7912-186-29-103-79.ngrok-free.app/webhook',
         };
         const preference = new Preference(client);
         const result = await preference.create({body, idempotencyKey});
@@ -54,6 +55,33 @@ app.post('/create_preference', async (req, res) => {
         });
     }
 });
+app.post('/webhook', async function (req, res){
+    // const payment = req.query;
+    const payment = req.body;
+    console.log({payment});
+
+    const paymentId = req.query.id;
+    
+    try{
+        const response = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+            },
+        });
+        if(response.ok){
+            const data = await response.json();
+            console.log(data);
+        }
+        res.sendStatus(200);
+        
+    }catch (error){
+        console.log('Error',error);
+        res.sendStatus(500);
+    }
+    
+    
+})
 
 app.listen(port, () => {
     console.log('Server corriendo en el puerto 3000');
