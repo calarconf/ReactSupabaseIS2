@@ -8,5 +8,5 @@
 - El primer paso sería instalar las dependencias de node con npm i
 - Luego crear un archivo .env y agregar las variables de entorno
 - Finalmente se corre con node index.js
-Manual técnico:
+- Manual técnico:
 https://seen-ear-f66.notion.site/Manual-t-cnico-Compostify-a845c8fe673b4ecca1cbdbce83ef30c4?pvs=4
