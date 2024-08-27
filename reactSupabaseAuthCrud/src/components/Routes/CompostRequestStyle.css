@@ -153,3 +153,48 @@ td {
 
     }
 }
+
+.scroll-bar-container {
+    width: 100%;
+    padding: 0.5rem 2rem;
+    text-align: center;
+}
+
+.range-section {
+    margin-bottom: 30px;
+}
+
+.custom-range {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    outline: none;
+    padding: 0.5rem 0rem;
+}
+
+.custom-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.custom-range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4caf50;
+    cursor: pointer;
+}
+
+.range-values {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    color: white;
+}

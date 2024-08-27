@@ -6,6 +6,71 @@ import { v4 as uuidv4 } from 'uuid';
 import { GoogleMap, LoadScript, Autocomplete, Marker } from '@react-google-maps/api';
 import styles from './TaskForm.module.css'; // Importa el CSS modular
 
+
+function ScrollBarSelector() {
+    const [value1, setValue1] = useState(0);
+    const [value2, setValue2] = useState(0);
+
+    // Efecto para actualizar el valor de value1 cuando value2 es 50
+    useEffect(() => {
+        if (value2 == 50) {
+            setValue1(0); // Restringe value1 a 0 si value2 es 50
+        }
+    }, [value2]);
+
+    const handleChange1 = event => {
+        setValue1(event.target.value);
+    };
+
+    const handleChange2 = event => {
+        setValue2(event.target.value);
+    };
+
+    const rangeValues1 = Array.from({ length: 10 }, (_, i) => i); // Valores de 0 a 9
+    const rangeValues2 = [0, 10, 20, 30, 40, 50]; // Valores de decenas
+
+    const sum = Number(value1) + Number(value2);
+
+    return (
+        <div className='scroll-bar-container'>
+            <div className='range-section'>
+                <input
+                    type='range'
+                    min='0'
+                    max='9'
+                    value={value1}
+                    onChange={handleChange1}
+                    className='custom-range'
+                    disabled={value2 == 50} // Desactiva la barra si value2 es 50
+                />
+                <div className='range-values'>
+                    {rangeValues1.map(val => (
+                        <span key={val}>{val}</span>
+                    ))}
+                </div>
+            </div>
+
+            <div className='range-section'>
+                <input
+                    type='range'
+                    min='0'
+                    max='50'
+                    step='10' // Incremento en decenas
+                    value={value2}
+                    onChange={handleChange2}
+                    className='custom-range'
+                />
+                <div className='range-values'>
+                    {rangeValues2.map(val => (
+                        <span key={val}>{val}</span>
+                    ))}
+                </div>
+            </div>
+
+            <div>residuos a recoger (Kg): {sum}</div>
+        </div>
+    );
+}
 initMercadoPago('APP_USR-a6036e51-cadc-4f55-8d5b-ed7cd5d54a6a', {
     locale: 'es-CO',
 });
@@ -150,6 +215,7 @@ function TaskForm() {
                 className={styles['form-control']}
             />
             {errors.taskName && <p className={styles.error}>{errors.taskName}</p>}
+            <ScrollBarSelector />
             <input
                 type="number"
                 name="organicWasteAmount"

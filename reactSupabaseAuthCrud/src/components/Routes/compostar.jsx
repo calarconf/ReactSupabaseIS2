@@ -24,7 +24,8 @@ function Compostar() {
                     <h1>¿Qué es Compostify?</h1>
                     <p1>Conectamos familias y empresas que buscan disminuir su
                         huella de carbono con transformadores de composta.</p1>
-                    <p1>Facilitamos la recolección de residios orgánicos a
+                    <p1>Facilitamos la comunicación eficiente entre generadores de residuos
+                        orgánicos, como familias y empresas, y la planta de compostaje de Sinambore* a
                         través de nuestra plataforma digital. Únete a
                         nuestra comunidad comprometida con el cambio ambiental
                         y comienza a transformar tus residuos en recursos hoy mismo.</p1></div>
@@ -53,7 +54,11 @@ function Compostar() {
                     </div>
                     <img className="image-content" alt="png2" src={png2} />
                 </div>
-            </div>
+                <div className="disclaimer" style={{ display: "flex", marginLeft: "50%" }} >
+                    <p1 style={{ color: "white", fontSize: "1rem", textAlign: "end" }}>*La conexión con la planta de repostaje Sinambore aún se encuentra en proceso
+                    </p1>
+                </div>
+            </div >
         </>
     )
 }
