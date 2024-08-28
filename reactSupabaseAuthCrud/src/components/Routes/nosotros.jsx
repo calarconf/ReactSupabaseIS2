@@ -28,11 +28,11 @@ function Nosotros() {
                         <h1 className='title'>Nuestra visión</h1>
                         <p className='text'>Para el 2027, Compostify será la plataforma líder en Bogotá donde familias y
                             empresas puedan solicitar la recolección de sus
-                            residuos orgánicos por parte de la planta de compostaje de Sinambore.</p>
+                            residuos orgánicos por parte de la planta de compostaje de Sinambore*.</p>
                         <div className="separator"></div>
                         <h1 className='title'>Nuestra misión</h1>
                         <p className='text'>Facilitar la conexión entre generadores de residuos orgánicos,
-                            tales como familias y empresas, con la planta de compostaje de Sinambore, gestionando el enlace de los involucrados a través de una plataforma digital innovadora. Nuestro compromiso es optimizar este proceso para
+                            tales como familias y empresas, con la planta de compostaje de Sinambore*, gestionando el enlace de los involucrados a través de una plataforma digital innovadora. Nuestro compromiso es optimizar este proceso para
                             promover prácticas sostenibles y contribuir a la creación de un entorno más limpio y ecológico.</p>
                     </div>
                     <img className="image" alt="VisionImg" src={visionImg} />
@@ -80,8 +80,8 @@ function Nosotros() {
                     </div>
                 </div>
                 <div className="disclaimer" style={{ display: "flex", marginLeft: "50%" }} >
-                    <p1 style={{ color: "white", fontSize: "1rem", textAlign: "end" }}>*La conexión con la planta de repostaje Sinambore aún se encuentra en proceso
-                    </p1>
+                    <p1 style={{ color: "white", fontSize: "1rem", textAlign: "end" }}>*La conexión con la planta de repostaje bore aún se encuentra en proceso
+                    </p1>Sinam
                 </div>
             </div>
 
