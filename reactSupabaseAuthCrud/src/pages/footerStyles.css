@@ -113,17 +113,20 @@
 
 .User-Manual {
     padding: 1.5rem;
-    a{
+
+    a {
         text-decoration: none;
         width: 100%;
         color: white;
 
     }
 }
-.User-Manual a:hover{
+
+.User-Manual a:hover {
     color: #25685D;
 
 }
+
 @media screen and (max-width: 700px) {
     .footer {
         width: 100%;

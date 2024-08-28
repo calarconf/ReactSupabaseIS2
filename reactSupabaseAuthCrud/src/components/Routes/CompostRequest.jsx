@@ -18,7 +18,6 @@ function CompostRequest() {
     return (
         <>
             <Navbar />
-
             <div className="compost-request-container">
                 <div className="how-to">
                     <h1>Recuerda:</h1>
