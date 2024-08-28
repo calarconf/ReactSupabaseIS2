@@ -9,9 +9,7 @@
 
 .form-control {
     margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 1rem;
     width: 60%;
 
 }
@@ -24,7 +22,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
+    font-size: 1rem;
     margin-top: 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -43,8 +41,9 @@
 }
 
 .error {
-    color: red;
-    font-size: 12px;
+    color: #d42929;
+    font-size: 1rem;
+    font-weight: 200;
     margin-bottom: 10px;
 }
 

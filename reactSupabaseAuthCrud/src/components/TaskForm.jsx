@@ -98,11 +98,11 @@ function TaskForm() {
     const [taskName, setTaskName] = useState('');
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState({});
-    const {createTask, adding } = useTasks();
+    const { createTask, adding } = useTasks();
 
     const [preferenceId, setPreferenceId] = useState(null);
     const [address, setAddress] = useState('');
-    const [autocomplete, setAutocomplete] = useState(null); 
+    const [autocomplete, setAutocomplete] = useState(null);
     const [markerPosition, setMarkerPosition] = useState(center);
     const [showSimularPago, setShowSimularPago] = useState(false);
 
@@ -122,12 +122,12 @@ function TaskForm() {
     const handleChange2 = event => {
         const newValue2 = Number(event.target.value);
         setValue2(newValue2);
-    
+
         if (newValue2 === 50) {
             setValue1(0); // Restringe value1 a 0 si value2 es 50
         }
     };
-    
+
 
     const rangeValues1 = Array.from({ length: 10 }, (_, i) => i); // Valores de 0 a 9
     const rangeValues2 = [0, 10, 20, 30, 40, 50]; // Valores de decenas
@@ -138,42 +138,42 @@ function TaskForm() {
         setPrice(calculatedPrice);
     }, [sum]);
 
-  
+
     const handleClick = async () => {
         const validationErrors = validate();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
             return;
         }
-    
-        const id = await createPreference(price); 
+
+        const id = await createPreference(price);
         if (id) {
-            setPreferenceId(id); 
-            setShowSimularPago(true); 
+            setPreferenceId(id);
+            setShowSimularPago(true);
         }
     };
-    
+
     const resetForm = () => {
         setTaskName('');
         setPrice(0);
         setAddress('');
         setErrors({});
-        setMarkerPosition(center); 
+        setMarkerPosition(center);
         setPreferenceId(null);
-        setShowSimularPago(false); 
-        setValue1(0);  
-        setValue2(0);  
+        setShowSimularPago(false);
+        setValue1(0);
+        setValue2(0);
         if (autocomplete) autocomplete.set('place', null); // Resetea el Autocomplete si está activo
     };
-    
-    
+
+
     const handleSimularPagoClick = async () => {
         const id = await createPreference(price);
         if (id) {
             setPreferenceId(id);
             await createTask(taskName, sum, price);
             alert('Simulación de pago realizada con éxito');
-            resetForm(); 
+            resetForm();
         }
     };
 
@@ -206,7 +206,7 @@ function TaskForm() {
         if (!taskName) {
             errors.taskName = 'La dirección no puede estar vacía';
         }
-        if (sum < 3){
+        if (sum < 3) {
             errors.organicWasteAmount = 'El peso debe ser de minimo 3 Kg';
         }
         return errors;
@@ -250,15 +250,8 @@ function TaskForm() {
 
     return (
         <form onSubmit={(e) => e.preventDefault()} className={styles.card}>
-            <input
-                type="text"
-                name="taskName"
-                placeholder="Dirección"
-                onChange={(e) => setTaskName(e.target.value)}
-                value={taskName}
-                className={styles['form-control']}
-            />
-            {errors.taskName && <p className={styles.error}>{errors.taskName}</p>}
+            <p1 style={{ textAlign: "start" }}>Danos un aproximado de la cantidad de los residuos que deseas entregar: </p1>
+
             <div className='scroll-bar-container'>
                 <div className='range-section'>
                     <input
@@ -297,65 +290,86 @@ function TaskForm() {
                 <div>Residuos a recoger (Kg): {sum}</div>
                 <div className={styles.price}>Precio: {price.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} COP</div>
             </div>
-            <LoadScript
-                googleMapsApiKey="AIzaSyAQj03uZc_sWxZuvoBrzDhoR_xQpxCVkuo"
-                libraries={libraries}
-            >
-                <Autocomplete
-                    onLoad={onLoad}
-                    onPlaceChanged={onPlaceChanged}
+            <div className="taskformFinal" style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                textAlign: "center"
+            }}>
+                <LoadScript
+                    googleMapsApiKey="AIzaSyAQj03uZc_sWxZuvoBrzDhoR_xQpxCVkuo"
+                    libraries={libraries}
                 >
-                    <input
-                        type="text"
-                        placeholder="Enter a location"
-                        style={{
-                            boxSizing: `border-box`,
-                            border: `1px solid transparent`,
-                            width: `240px`,
-                            height: `32px`,
-                            padding: `0 12px`,
-                            borderRadius: `3px`,
-                            boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                            fontSize: `14px`,
-                            outline: `none`,
-                            textOverflow: `ellipses`,
-                            position: "absolute",
-                            left: "50%",
-                            marginLeft: "-120px"
+                    <Autocomplete
+                        onLoad={onLoad}
+                        onPlaceChanged={onPlaceChanged}
+                    >
+                        <input
+                            type="text"
+                            placeholder="Enter a location"
+                            style={{
+                                boxSizing: `border-box`,
+                                border: `1px solid transparent`,
+                                width: `240px`,
+                                height: `32px`,
+                                padding: `0 12px`,
+                                borderRadius: `3px`,
+                                boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                                fontSize: `14px`,
+                                outline: `none`,
+                                textOverflow: `ellipses`,
+                                position: "absolute",
+                                left: "50%",
+                                marginLeft: "-120px"
+                            }}
+                        />
+                    </Autocomplete>
+                    <GoogleMap
+                        mapContainerStyle={containerStyle}
+                        center={markerPosition}
+                        zoom={15}
+                        onClick={handleMapClick}
+                    >
+                        <Marker position={markerPosition} />
+                    </GoogleMap>
+
+                    <p
+                        className={styles['form-control']}
+                    >
+                        {taskName || "Selecciona tu dirección en el mapa"}
+                    </p>
+                    {errors.taskName && <p className={styles.error}>{errors.taskName}</p>}
+                    {errors.organicWasteAmount && <p className={styles.error}>{errors.organicWasteAmount}</p>}
+                </LoadScript>
+                <button onClick={handleClick} disabled={adding} className={styles.btn}>
+                    {adding ? 'Solicitando...' : 'Solicitar'}
+                </button>
+            </div>
+            {
+                showSimularPago && (
+                    <button onClick={handleSimularPagoClick} className={styles.btn}>
+                        Simular pago
+                    </button>
+
+                )
+            }
+            {
+                preferenceId && (
+                    <Wallet
+                        initialization={{ preferenceId: preferenceId, redirectMode: 'blank' }}
+                        onReady={() => console.log('Wallet ready')}
+                        onError={(error) => console.error('Error in Wallet', error)}
+                        onEvent={({ type, data }) => {
+                            if (type === 'payment_approved') {
+                                handlePaymentApproved();
+                            }
                         }}
                     />
-                </Autocomplete>
-                <GoogleMap
-                    mapContainerStyle={containerStyle}
-                    center={markerPosition}
-                    zoom={15}
-                    onClick={handleMapClick}
-                >
-                    <Marker position={markerPosition} />
-                </GoogleMap>
-            </LoadScript>
-            <button onClick={handleClick} disabled={adding} className={styles.btn}>
-                {adding ? 'Solicitando...' : 'Solicitar'}
-            </button>
-            {showSimularPago && (
-                <button onClick={handleSimularPagoClick} className={styles.btn}>
-                    Simular pago
-                </button>
-                
-            )}
-            {preferenceId && (
-                <Wallet
-                    initialization={{ preferenceId: preferenceId, redirectMode: 'blank' }}
-                    onReady={() => console.log('Wallet ready')}
-                    onError={(error) => console.error('Error in Wallet', error)}
-                    onEvent={({ type, data }) => {
-                        if (type === 'payment_approved') {
-                            handlePaymentApproved();
-                        }
-                    }}
-                />
-            )}
-        </form>
+                )
+            }
+        </form >
     );
 }
 
