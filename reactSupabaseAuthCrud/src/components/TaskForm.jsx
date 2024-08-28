@@ -7,70 +7,77 @@ import { GoogleMap, LoadScript, Autocomplete, Marker } from '@react-google-maps/
 import styles from './TaskForm.module.css'; // Importa el CSS modular
 
 
-function ScrollBarSelector() {
-    const [value1, setValue1] = useState(0);
-    const [value2, setValue2] = useState(0);
+// function ScrollBarSelector() {
+//     const [value1, setValue1] = useState(0);
+//     const [value2, setValue2] = useState(0);
+//     const [price, setPrice] = useState(0);
 
-    // Efecto para actualizar el valor de value1 cuando value2 es 50
-    useEffect(() => {
-        if (value2 == 50) {
-            setValue1(0); // Restringe value1 a 0 si value2 es 50
-        }
-    }, [value2]);
 
-    const handleChange1 = event => {
-        setValue1(event.target.value);
-    };
+//     // Efecto para actualizar el valor de value1 cuando value2 es 50
+//     useEffect(() => {
+//         if (value2 == 50) {
+//             setValue1(0); // Restringe value1 a 0 si value2 es 50
+//         }
+//     }, [value2]);
 
-    const handleChange2 = event => {
-        setValue2(event.target.value);
-    };
+//     const handleChange1 = event => {
+//         setValue1(event.target.value);
+//     };
 
-    const rangeValues1 = Array.from({ length: 10 }, (_, i) => i); // Valores de 0 a 9
-    const rangeValues2 = [0, 10, 20, 30, 40, 50]; // Valores de decenas
+//     const handleChange2 = event => {
+//         setValue2(event.target.value);
+//     };
 
-    const sum = Number(value1) + Number(value2);
+//     const rangeValues1 = Array.from({ length: 10 }, (_, i) => i); // Valores de 0 a 9
+//     const rangeValues2 = [0, 10, 20, 30, 40, 50]; // Valores de decenas
 
-    return (
-        <div className='scroll-bar-container'>
-            <div className='range-section'>
-                <input
-                    type='range'
-                    min='0'
-                    max='9'
-                    value={value1}
-                    onChange={handleChange1}
-                    className='custom-range'
-                    disabled={value2 == 50} // Desactiva la barra si value2 es 50
-                />
-                <div className='range-values'>
-                    {rangeValues1.map(val => (
-                        <span key={val}>{val}</span>
-                    ))}
-                </div>
-            </div>
+//     const sum = Number(value1) + Number(value2);
+//     useEffect(() => {
+//         const calculatedPrice = (sum / 10) * 27500;
+//         setPrice(calculatedPrice);
+//     }, [sum]);
 
-            <div className='range-section'>
-                <input
-                    type='range'
-                    min='0'
-                    max='50'
-                    step='10' // Incremento en decenas
-                    value={value2}
-                    onChange={handleChange2}
-                    className='custom-range'
-                />
-                <div className='range-values'>
-                    {rangeValues2.map(val => (
-                        <span key={val}>{val}</span>
-                    ))}
-                </div>
-            </div>
+//     return (
+//         <div className='scroll-bar-container'>
+//             <div className='range-section'>
+//                 <input
+//                     type='range'
+//                     min='0'
+//                     max='9'
+//                     value={value1}
+//                     onChange={handleChange1}
+//                     className='custom-range'
+//                     disabled={value2 === 50} // Desactiva la barra si value2 es 50
+//                 />
+//                 <div className='range-values'>
+//                     {rangeValues1.map(val => (
+//                         <span key={val}>{val}</span>
+//                     ))}
+//                 </div>
+//             </div>
 
-            <div>residuos a recoger (Kg): {sum}</div>
-        </div>
-    );
-}
+//             <div className='range-section'>
+//                 <input
+//                     type='range'
+//                     min='0'
+//                     max='50'
+//                     step='10' // Incremento en decenas
+//                     value={value2}
+//                     onChange={handleChange2}
+//                     className='custom-range'
+//                 />
+//                 <div className='range-values'>
+//                     {rangeValues2.map(val => (
+//                         <span key={val}>{val}</span>
+//                     ))}
+//                 </div>
+//             </div>
+
+//             <div>Residuos a recoger (Kg): {sum}</div>
+//             <div className={styles.price}>Precio: {price.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} COP</div>
+//         </div>
+//     );
+// }
 initMercadoPago('APP_USR-a6036e51-cadc-4f55-8d5b-ed7cd5d54a6a', {
     locale: 'es-CO',
 });
@@ -89,17 +96,48 @@ const libraries = ['places'];
 
 function TaskForm() {
     const [taskName, setTaskName] = useState('');
-    const [organicWasteAmount, setOrganicWasteAmount] = useState("");
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState({});
     const {createTask, adding } = useTasks();
-    const [, setAdding] = useState(false); // Eliminé setAdding, ya que no se necesita si `adding` viene de useTasks()
 
     const [preferenceId, setPreferenceId] = useState(null);
     const [address, setAddress] = useState('');
     const [autocomplete, setAutocomplete] = useState(null); 
     const [markerPosition, setMarkerPosition] = useState(center);
     const [showSimularPago, setShowSimularPago] = useState(false);
+
+    const [value1, setValue1] = useState(0);
+    const [value2, setValue2] = useState(0);
+
+    // Efecto para actualizar el valor de value1 cuando value2 es 50
+    useEffect(() => {
+        if (value2 == 50) {
+            setValue1(0); // Restringe value1 a 0 si value2 es 50
+        }
+    }, [value2]);
+    const handleChange1 = event => {
+        setValue1(event.target.value);
+    };
+
+    const handleChange2 = event => {
+        const newValue2 = Number(event.target.value);
+        setValue2(newValue2);
+    
+        if (newValue2 === 50) {
+            setValue1(0); // Restringe value1 a 0 si value2 es 50
+        }
+    };
+    
+
+    const rangeValues1 = Array.from({ length: 10 }, (_, i) => i); // Valores de 0 a 9
+    const rangeValues2 = [0, 10, 20, 30, 40, 50]; // Valores de decenas
+
+    const sum = Number(value1) + Number(value2);
+    useEffect(() => {
+        const calculatedPrice = (sum / 10) * 27500;
+        setPrice(calculatedPrice);
+    }, [sum]);
+
   
     const handleClick = async () => {
         const validationErrors = validate();
@@ -117,30 +155,27 @@ function TaskForm() {
     
     const resetForm = () => {
         setTaskName('');
-        setOrganicWasteAmount("");
         setPrice(0);
         setAddress('');
         setErrors({});
         setMarkerPosition(center); 
         setPreferenceId(null);
         setShowSimularPago(false); 
+        setValue1(0);  
+        setValue2(0);  
+        if (autocomplete) autocomplete.set('place', null); // Resetea el Autocomplete si está activo
     };
+    
     
     const handleSimularPagoClick = async () => {
         const id = await createPreference(price);
         if (id) {
             setPreferenceId(id);
-            await createTask(taskName, organicWasteAmount, price);
+            await createTask(taskName, sum, price);
             alert('Simulación de pago realizada con éxito');
             resetForm(); 
         }
     };
-
-    useEffect(() => {
-        const calculatedPrice = (organicWasteAmount / 10) * 27500;
-        setPrice(calculatedPrice);
-        setPreferenceId(null);
-    }, [organicWasteAmount]);
 
 
     const createPreference = async (price) => {
@@ -169,22 +204,17 @@ function TaskForm() {
     const validate = () => {
         const errors = {};
         if (!taskName) {
-            errors.taskName = 'La dirección no puede estar vacía';;
+            errors.taskName = 'La dirección no puede estar vacía';
         }
-        if (organicWasteAmount <= 1) {
-            errors.organicWasteAmount = 'La cantidad debe ser mayor a 3kg';
-        } else if (organicWasteAmount > 30) {
-            errors.organicWasteAmount = 'La cantidad debe ser menor o igual a 30Kg';
+        if (sum < 3){
+            errors.organicWasteAmount = 'El peso debe ser de minimo 3 Kg';
         }
         return errors;
     };
 
     const setPaymentApproved = async () => {
         await createTask(taskName, organicWasteAmount, price);
-        setTaskName('');
-        setOrganicWasteAmount(0);
-        setErrors({});
-        setPreferenceId(null);
+        resetForm();
         alert('Pago realizado con éxito');
     };
 
@@ -229,17 +259,44 @@ function TaskForm() {
                 className={styles['form-control']}
             />
             {errors.taskName && <p className={styles.error}>{errors.taskName}</p>}
-            <ScrollBarSelector />
-            <input
-                type="number"
-                name="organicWasteAmount"
-                placeholder="Cantidad de desechos orgánicos"
-                onChange={(e) => setOrganicWasteAmount(parseInt(e.target.value))}
-                value={organicWasteAmount}
-                className={styles['form-control']}
-            />
-            {errors.organicWasteAmount && <p className={styles.error}>{errors.organicWasteAmount}</p>}
-            <p className={styles.price}>Precio: {price} COP</p>
+            <div className='scroll-bar-container'>
+                <div className='range-section'>
+                    <input
+                        type='range'
+                        min='0'
+                        max='9'
+                        value={value1}
+                        onChange={handleChange1}
+                        className='custom-range'
+                        disabled={value2 === 50} // Desactiva la barra si value2 es 50
+                    />
+                    <div className='range-values'>
+                        {rangeValues1.map(val => (
+                            <span key={val}>{val}</span>
+                        ))}
+                    </div>
+                </div>
+
+                <div className='range-section'>
+                    <input
+                        type='range'
+                        min='0'
+                        max='50'
+                        step='10' // Incremento en decenas
+                        value={value2}
+                        onChange={handleChange2}
+                        className='custom-range'
+                    />
+                    <div className='range-values'>
+                        {rangeValues2.map(val => (
+                            <span key={val}>{val}</span>
+                        ))}
+                    </div>
+                </div>
+
+                <div>Residuos a recoger (Kg): {sum}</div>
+                <div className={styles.price}>Precio: {price.toLocaleString('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} COP</div>
+            </div>
             <LoadScript
                 googleMapsApiKey="AIzaSyAQj03uZc_sWxZuvoBrzDhoR_xQpxCVkuo"
                 libraries={libraries}
