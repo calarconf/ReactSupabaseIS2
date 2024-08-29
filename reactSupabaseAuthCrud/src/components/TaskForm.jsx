@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTasks } from '../context/TaskContext';
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { GoogleMap, LoadScript, Autocomplete, Marker } from '@react-google-maps/api';
 import styles from './TaskForm.module.css'; // Importa el CSS modular
-
+import emailjs from '@emailjs/browser';
 
 // function ScrollBarSelector() {
 //     const [value1, setValue1] = useState(0);
@@ -247,9 +247,29 @@ function TaskForm() {
             setTaskName(formattedAddress);
         }
     };
+    const form = useRef();
+
+    const sendEmail = (e) => {
+      e.preventDefault();
+
+      emailjs
+      .sendForm('service_cnq2e3j', 'template_bqqfhtk', form.current, {
+        publicKey: '6qL45ME9lDNSepcpU',
+      })
+        .then(
+          () => {
+            console.log('SUCCESS!');
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+          },
+        );
+    };
 
     return (
-        <form onSubmit={(e) => e.preventDefault()} className={styles.card}>
+        
+        <form ref={form} onSubmit={sendEmail} className={styles.card}>
+
             <p1 style={{ textAlign: "start" }}>Danos un aproximado de la cantidad de los residuos que deseas entregar: </p1>
 
             <div className='scroll-bar-container'>
@@ -343,18 +363,19 @@ function TaskForm() {
                     {errors.taskName && <p className={styles.error}>{errors.taskName}</p>}
                     {errors.organicWasteAmount && <p className={styles.error}>{errors.organicWasteAmount}</p>}
                 </LoadScript>
-                <button onClick={handleClick} disabled={adding} className={styles.btn}>
-                    {adding ? 'Solicitando...' : 'Solicitar'}
-                </button>
-            </div>
-            {
-                showSimularPago && (
-                    <button onClick={handleSimularPagoClick} className={styles.btn}>
+                {/* Hidden fields to send taskName, sum, and price */}
+                    <input type="hidden" name="user_name" value={taskName} />
+                    <input type="hidden" name="user_email" value={sum} />
+                    <input type="hidden" name="message" value={price} />
+                    <button onClick={handleClick} disabled={adding} className={styles.btn}>
+                        {adding ? 'Solicitando...' : 'Solicitar'}
+                    </button>
+                </div>
+                {showSimularPago && (
+                    <button type='submit' onClick={handleSimularPagoClick} className={styles.btn}>
                         Simular pago
                     </button>
-
-                )
-            }
+            )}
             {
                 preferenceId && (
                     <Wallet
