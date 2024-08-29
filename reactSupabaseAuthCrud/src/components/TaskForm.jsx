@@ -368,13 +368,15 @@ function TaskForm() {
                     <input type="hidden" name="user_email" value={sum} />
                     <input type="hidden" name="message" value={price} />
                     <button onClick={handleClick} disabled={adding} className={styles.btn}>
-                        {adding ? 'Solicitando...' : 'Solicitar'}
-                    </button>
-                </div>
-                {showSimularPago && (
-                    <button type='submit' onClick={handleSimularPagoClick} className={styles.btn}>
-                        Simular pago
-                    </button>
+                {adding ? 'Solicitando...' : 'Solicitar'}
+                
+            </button>
+                        </div>
+            {showSimularPago && (
+                <button onClick={handleSimularPagoClick} className={styles.btn}>
+                    Simular pago
+                </button>
+                
             )}
             {
                 preferenceId && (
